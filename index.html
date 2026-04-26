@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.nms</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        ::selection {
+        background: rgba(0, 0, 255);
+        color: #ffffff;
+        }
+        ::-moz-selection {
+            background: rgba(0, 0, 255);
+            color: #ffffff;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Zen Old Mincho', serif;
+            line-height: 1.7;
+            font-size: 18px;
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 40px 20px 80px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        h1 {
+            font-size: 5.5rem;
+            font-weight: 700;
+            letter-spacing: -4px;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: #ffffff;
+            opacity: 0.7;
+            margin-bottom: 40px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        nav a {
+            color: rgba(0, 0, 255);
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+            text-underline-offset: 6px;
+        }
+
+        .hero {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .caption {
+            font-size: 0.95rem;
+            color: #ffffff;
+            opacity: 0.6;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 1.85rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            margin-bottom: -4px;
+        }
+
+        .highlight {
+            background: rgba(0, 0, 255);
+            padding: 0px 2px;
+            box-decoration-break: clone;
+            display: inline;
+        }
+
+        .image-container {
+            margin: 40px 0;
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border: 1px solid #000;
+        }
+
+        .work-title {
+            font-size: 1.15rem;
+            margin-top: 10px;
+            color: #fff;
+            text-align: center;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 80px;
+            font-size: 1.1rem;
+        }
+
+        .footer a {
+            color: rgba(0, 0, 255);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        .dog-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            display: block;
+            margin: 240px auto;  /* 40 standart, -120 hover, 250 full page*/
+        }
+
+        .blue-square {
+            width: 400px;
+            height: 400px;
+            background: rgb(0, 0, 255);
+            margin: 20px auto;
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>www.nms</h1>
+        <p class="subtitle">personal archive • 2026 • not my space, not my place</p>
+        <div class="image-container">
+            <img src="dog.png" alt="Dog" draggable="false" class="dog-image">
+        </div>
+    </header>
+
+    <nav>
+        <a href="/works">works</a>
+        <a href="/writing">writting</a>
+        <a href="/about">about</a>
+        <a href="/roll">cameraroll</a>
+        <a href="/contrast">contrast</a>
+    </nav>
+
+    <section>
+        <p>
+            A publicly accessible <span class="highlight">personal archive.</span> A place where fragments of myself are preserved. There is no desire for closure or clarity here.
+        </p>
+    </section>
+
+    <section>
+        <p>
+            I appreciate silence. The sound of people talking makes me anxious. But <span class="highlight">noise (like harsh noise)</span> helps me stop thinking and calm down. I tend to isolate myself. Solitude isn’t a problem for me; it’s a natural state in which it’s easier to think and feel at ease.
+        </p>
+        <div class="blue-square"></div>
+        <p class="caption">Blue is the rejection of hatred. • 2025</p>
+        <p>
+    </section>
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/White_wagtail_female_first_summer.jpg" alt="Hero" class="hero">
+    <p class="caption">White wagtail
+        <span class="highlight"><a href="https://en.wikipedia.org/wiki/White_wagtail" text-decoration: none;"></span>wikipedia</a>
+        </p>
+
+    <section>
+        <p>This is a raw personal space. No trends, no polish, just thoughts and fragments.</p>
+        <p>I write when I feel like it. I post images that stay with me. Nothing more, nothing less.</p>
+        
+        <p>Life is <span class="highlight">too loud</span> lately. This website is my attempt to stay quiet.</p>
+    </section>
+
+    <div class="image-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/This_is_Kiruna.jpg/1920px-This_is_Kiruna.jpg" alt="Work 1">
+        <p class="caption">Kiruna Municipality • 2025</p>
+        <p class="work-title">Untitled Study • 2025</p>
+    </div>
+
+    <section>
+        <h2>Recent Notes</h2>
+        <p>Sometimes I wonder why we keep building more noise. The internet was supposed to connect us, but it mostly <span class="highlight">isolates</span>.</p>
+        <p>Anyway. Here I just put things that matter to me. No performance. No audience in mind.</p>
+    </section>
+
+    <div class="image-container">
+        <img src="https://horreur.com/sites/default/files/styles/large/public/Niku-Daruma-Psycho-Snuff-Reels-Tumbling-Doll-of-Flesh-movie-6_0.jpg?itok=hqk7Pnih" alt="Work 2">
+        <p class="work-title">Contrast • 2024</p>
+        <p>I am drawn to the <span class="highlight">beauty of contrast</span>. The sharp line between light and darkness, between violence and peace, between noise and stillness. I look for it everywhere.</p>
+
+    </div>
+
+    <div class="footer">
+        <a href="/writing">→ read all entries</a>
+    </div>
+
+</body>
+</html>
