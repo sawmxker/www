@@ -16,8 +16,8 @@
             box-sizing: border-box;
         }
         ::selection {
-        background: rgba(0, 0, 255);
-        color: #ffffff;
+            background: rgba(0, 0, 255);
+            color: #ffffff;
         }
         ::-moz-selection {
             background: rgba(0, 0, 255);
@@ -146,7 +146,7 @@
             max-width: 600px;
             height: auto;
             display: block;
-            margin: 240px auto;  /* 40 standart, -120 hover, 250 full page*/
+            margin: 240px auto;
         }
 
         .blue-square {
@@ -157,71 +157,208 @@
             display: block;
         }
 
+        .caption-link {
+            color: #ffffff !important;
+            opacity: 1 !important;
+            text-decoration: none;
+        }
+        .caption-link:hover {
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        .music-card {
+            display: flex;
+            align-items: center;
+            --grad-angle: 180deg;
+            --color-1: #474b8f;
+            --color-2: #202456;
+            
+            background: linear-gradient(var(--grad-angle), var(--color-1) 0%, var(--color-2) 100%);
+            border: 2px solid #282868;
+            border-radius: 18px;
+            padding: 14px;
+            text-decoration: none;
+            color: white;
+            width: 100%;
+            max-width: 800px;
+            margin: 30px 0;            
+            transition: --color-1 0.75s ease, --color-2 0.5s ease;
+        }
+
+        .music-card:hover {
+            --grad-angle: 180deg;
+            --color-1: #202456;
+            --color-2: #00f;
+        }
+
+        @property --color-1 {
+        syntax: '<color>';
+        initial-value: #474b8f;
+        inherits: false;
+        }
+
+        @property --color-2 {
+        syntax: '<color>';
+        initial-value: #202456;
+        inherits: false;
+        }
+
+        .music-card .album-art {
+            width: 85px;
+            height: 85px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-right: 18px;
+            transition: opacity 0.3s ease;
+        }
+
+        .music-card .album-art:hover {
+            opacity: 0.6;
+        }
+
+        .music-card .info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .music-card .track-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        .music-card .artist-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .music-card .artist-avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .music-card .artist-name {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
     </style>
 </head>
 <body>
 
     <header>
         <h1>www.nms</h1>
-        <p class="subtitle">personal archive • 2026 • not my space, not my place</p>
+        <p class="subtitle">personal archive • 2026</p>
         <div class="image-container">
             <img src="dog.png" alt="Dog" draggable="false" class="dog-image">
         </div>
     </header>
 
     <nav>
-        <a href="/works">works</a>
-        <a href="/writing">writting</a>
-        <a href="/about">about</a>
-        <a href="/roll">cameraroll</a>
-        <a href="/contrast">contrast</a>
+        <a href="/projects">/projects</a>
+        <a href="/works">/works</a>
+        <a href="/writing">/writting</a>
+        <a href="about.html">/about</a>
+        <a href="/roll">/cameraroll</a>
+        <a href="/contrast">/contrast</a>
+        <a href="/code">/code</a>
     </nav>
 
     <section>
         <p>
-            A publicly accessible <span class="highlight">personal archive.</span> A place where fragments of myself are preserved. There is no desire for closure or clarity here.
+            A publicly accessible personal archive. A place where I leave <span class="highlight">fragments of myself</span>, without trying to piece them together into a coherent story. There is no desire here for completeness or clarity. This is not a biography, nor is it a narrative with a beginning and an end. Thoughts, moods, tastes, contradictions.
         </p>
     </section>
 
+    <section>        
+        <p>I appreciate silence. The sound of people talking makes me anxious. But <span class="highlight">noise (like harsh noise)</span> helps me stop thinking and calm down.</p>        
+        <p>For a long time, music didn’t mean much to me. As a child, it seemed like a nuisance that annoyed me. When I started listening to music intentionally, it felt more awkward than natural. I didn’t have my own musical tastes; I listened to whatever was available—whatever I heard from friends or found online. But over time, sound became essential to me. Now I’d call myself a music lover, but that word isn’t quite accurate. I can listen to any kind of music—my playlists are very diverse—but I have a clear preference for certain genres, and it’s not random.</p>
+        <div class="image-container">
+            <img src="phlpshps.webp" alt="Work 1" style="max-width: 160px; width: 100%; display: block; margin: 0 auto;">
+            <p class="caption">Headphones-liners Philips SHE1350/00</p>
+        </div>
+        <p>The starting point was around 2021, when I started listening to breakcore. It was aggressive, raw, and overloaded music, but there was something alive in it that drew me to it. Gradually, my interest deepened. I moved from more accessible stuff to still-popular subgenres, like lolicore. Artists like loli in early 20s, goreshit, and the like became the next stage. There, the sound became even more fragmented, emotionally intense, and strange.</p>
+        <p>Then I started moving toward an even more experimental electronic scene. Squarepusher, Venetian Snares—especially the album “Songs About My Cats” with the track “Chinaski”—became an important part of this transition. In their work, you could already sense complete chaos, but also structure and complexity. </p>
+        <p>Alongside my interest in experimental film, I discovered <span class="highlight">noise music.</span> Merzbow was one of the first artists I encountered. It was a whole new level of experience. No rhythmic melodies, just <span class="highlight">pure sound texture.</span> Harsh noise doesn’t overwhelm; on the contrary, it clears the mind. There’s no familiar logic to it, and that’s exactly why it helps me stop the flow of thoughts.</p>
+    </section>
+
     <section>
-        <p>
-            I appreciate silence. The sound of people talking makes me anxious. But <span class="highlight">noise (like harsh noise)</span> helps me stop thinking and calm down. I tend to isolate myself. Solitude isn’t a problem for me; it’s a natural state in which it’s easier to think and feel at ease.
-        </p>
+        <a href="https://open.spotify.com/album/0CwCgf6DOo0mI33w5zzyFV?si=ba87bb0a16cb4e00" class="music-card">
+            <img src="https://i.scdn.co/image/ab67616d0000b27303e553ea1d0b00d305e8d3c9" alt="Album Art" class="album-art">
+            <div class="info">
+                <span class="track-title">Magnesia Nova</span>
+                <div class="artist-row">
+                    <img src="https://i.scdn.co/image/ab6772690000dd22965a62ae75b9bad89d9913f7" alt="Artist" class="artist-avatar">
+                    <span class="artist-name">Merzbow</span>
+                </div>
+            </div>
+        </a>
+    </section>
+
+    <section>
+        <p>The further I moved away from my usual, superficial perceptions, the deeper I delved into my own inner self. I tend to isolate myself. Solitude wasn’t really a problem for me; rather, it was a natural state that I had simply grown accustomed to—or one in which I simply wanted to be. I often went off to play in the woods alone as a child; I had some strange habits, but I think that partly instilled in me a love for animals. <span class="highlight">I don’t feel afraid of dogs</span>, and this feeling hasn’t come and gone. It’s simply always been a part of me, and I like that. Once, a stray dog started gnawing and biting at my pant leg; I didn’t react, and the dog just walked away. I like cats and dogs, caterpillars and hawk moths, and all sorts of living creatures in general. There is a <span class="highlight">special beauty</span> in them simply by virtue of their existence in the world.</p>
+    </section>
+
+    <section>
+        <img src="src/photos/IMG_4589.jpg" alt="Noctuidae" class="hero">
+        <p class="caption">Noctuidae • June 28, 2024</p>    
+    </section>
+
+    <section>
+        <p>This largely shapes my attitude toward people (not everyone, of course) and toward what’s happening around me. <span class="highlight">I hate hate.</span> This isn’t an emotional exaggeration, but a rather clear feeling. I dislike ideas based on division, superiority, and aggression. Nazism, racism, xenophobia, justifying violence, romanticizing war, justifying murder, and so on. It’s especially strange to watch how such things spread among children and teenagers through memes, influencers, and jokes that gradually cease to be just jokes, while the people afflicted by this scourge don’t even realize it.</p>
+        <p>To me, hatred seems like one of the most artificial things people constantly try to justify or conceal. It rarely arises on its own, and it doesn’t come out of nowhere—this is an obvious truth that goes without saying. It is created, amplified, and turned into a habit.</p>
+        <p>I don’t just dislike this destructive emotion—I despise it. It turns people into empty shells, stealing their joy, empathy, and the ability to see another person as a human being. <span class="highlight">Pacifism is not weakness</span> or “naive goodness”; it is a conscious <span class="highlight">choice to refuse to participate in the cycle of malice.</span> To eradicate anger.</p>
+    </section>
+    <section><p>I don’t want my life or my words to push anyone toward violence, even indirectly. The world is already full of pain—why multiply it?</p></section>
+    <section>
+        <p>I see how Nazism and mutual hatred are quietly seeping into teenagers’ minds through what people like to call “ironic” content. One click—and there’s a “funny” meme with a swastika, a “joke” about “racial purity” that actually teaches people to hate “outsiders” quite clearly. <span class="highlight">People use humor to mask real hostility,</span> and it’s disgusting. Even if at first it might seem like something truly harmless, sooner or later it comes to the point where this person gets upset that “you can’t even give a proper Nazi salute on the internet these days.” And people—or simply impressionable minds who haven’t yet learned to filter out the poison—absorb this as the norm. Then it escalates into actual words, then into actions (for example, in the 2025–2026 school year alone, 18 armed attacks on educational institutions were recorded in Russia. Moreover, according to the Ministry of Internal Affairs, 13 such attacks occurred between January and April 2026 alone.) against those whom they deem weak or simply unworthy of life. I believe that any form of promoting Nazism is a crime against the future and an excuse for crimes against humanity. Because Nazism did not die in 1945; it simply changed form.</p>    
+        <p>It all follows a chain: racism, xenophobia, war, murder, violence. These are all different facets of the same problem. When you start dividing people into “us” and “them” based on skin color, nationality, religion, or simply where they come from—you’ve already opened the door to evil.</p>    
+        <p>And here I come to what has become a personal example of <span class="highlight">anti-hatred</span> for me: the color blue in my website’s design. I used to just can’t stand it. It seemed “not my thing” to me. But over time, I started experimenting: pairing blue with warm shades—orange, yellow, burgundy. And suddenly I noticed how it came to life, how it added depth and calm.</p>    
+        <p>Gradually, blue stopped being “that one color I don’t like” and became one of the strongest and most beautiful in my palette. It now symbolizes for me precisely this anti-hatred: I don’t reject what initially repelled me, but give it a chance to reveal itself in a new way. It’s a small but very personal <span class="highlight">act of overcoming prejudice.</span></p>    
+    </section>
+
+    <section>
         <div class="blue-square"></div>
-        <p class="caption">Blue is the rejection of hatred. • 2025</p>
-        <p>
+        <p class="caption">Blue is the rejection of hatred.</p>
     </section>
-
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/White_wagtail_female_first_summer.jpg" alt="Hero" class="hero">
-    <p class="caption">White wagtail
-        <span class="highlight"><a href="https://en.wikipedia.org/wiki/White_wagtail" text-decoration: none;"></span>wikipedia</a>
-        </p>
 
     <section>
-        <p>This is a raw personal space. No trends, no polish, just thoughts and fragments.</p>
-        <p>I write when I feel like it. I post images that stay with me. Nothing more, nothing less.</p>
-        
-        <p>Life is <span class="highlight">too loud</span> lately. This website is my attempt to stay quiet.</p>
+        <p>All colors are beautiful. Absolutely all of them. There are no “right” or “wrong” colors, no “masculine” or “feminine” colors. Red, green, yellow, purple, black, white. Every color is unique in its own way, and when you start combining them, something incredible is born. Their combinations show just how much richer the world is when you don’t limit yourself with silly, contrived boundaries.</p>
+        <p>Take the color cyan, for example. Right now, I don’t really like it either, just as I once disliked blue. It seems too light and somehow bland to me. But I know for sure: in time, I’ll be able to love it too. Just like I came to love blue. I just need to give it a chance, look at it in new combinations—with dark blue, with gold, with gray. And it will reveal itself too.</p>
+        <p>And the reason why I didn’t like either blue or light blue before is completely absurd: since childhood, they’ve been pushed on us as “colors for boys.” All this gender nonsense—it drives me crazy. Who decided that pink is for girls and blue is for boys? Who came up with the idea that a color can determine who you’re supposed to be? It’s the same hatred, just on a smaller scale: dividing the world into “right” and “wrong” based on a completely ridiculous criterion.</p>
+        <p>I find this fundamentally wrong. People should be free to choose what they like, regardless of whether it’s “masculine” or “feminine.” Colors have no gender. Neither do emotions, interests, or dreams. This whole gender thing is an artificial framework that only limits us and sows that very same petty hatred from childhood onward. There’s nothing wrong with a boy playing with a pink doll if he likes it and isn’t doing anything wrong, and there’s nothing wrong with a girl playing with a blue toy car. I’m against such restrictions. Completely.</p>
+        <p>That’s why my blue website isn’t just a design. It’s a manifesto through which I’m learning to love. I choose expansion, not narrowing. <span class="highlight">I choose freedom.</span> I choose anti-hatred in everything—from big things like war and Nazism to small things like the color on a screen.</p>
+        <p>All colors are beautiful. And all people can be beautiful too, <span class="highlight">if we don’t let hatred spoil them.</span></p>
     </section>
 
-    <div class="image-container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/This_is_Kiruna.jpg/1920px-This_is_Kiruna.jpg" alt="Work 1">
-        <p class="caption">Kiruna Municipality • 2025</p>
-        <p class="work-title">Untitled Study • 2025</p>
-    </div>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Oak_Hawk-moth_%28Marumba_quercus%29_%288332989246%29.jpg" alt="Hero" class="hero">
+    <p class="caption">Marumba quercus male, <span class="highlight"><a href="https://upload.wikimedia.org/wikipedia/commons/b/b1/Oak_Hawk-moth_%28Marumba_quercus%29_%288332989246%29.jpg" class="caption-link">commons.wikimedia.org</a></span></p>
+    <section>
+        <p>To me, contrast is more than just a combination of colors. It’s the deep darkness and the vibrant warmth of greenery. The soft, velvety tones of wings and the sharp yet delicate pinkish-red.</p>
+        <p><span class="highlight">Contrast creates tension and harmony at the same time.</span></p>
+        <p>Darkness is not merely a backdrop; it highlights life. Greenery is not merely a decoration; it pulsates on the edge of blackness. Light-colored wings do not disappear into the darkness, but gain depth precisely because of it. Contrast is not a mere embellishment, but a necessary condition for the existence of beauty and art itself. Without one side, the other loses its meaning and power.</p>
+        <p>I believe contrast is one of the most important things—both in art and in life itself. It manifests itself in the clear boundaries between the closed and the open, between silence and a scream, between tranquility and chaos.</p>
+        <p>Without evil, it is impossible to truly understand and appreciate good. Without hatred, we would not be able to fully appreciate the value of love and acceptance. Without darkness, light remains flat and expressionless. Contrast is what gives the world depth and dimension. It prevents reality from becoming monotonous.</p>
+        <p>And perhaps that is precisely why I do not try to eliminate the dark side entirely. I do not want to make the world flat and sterile. Not because I believe a world without evil would be boring. Contrast does not exist to justify evil, but to help us see its boundaries and avoid becoming part of it. To see the difference between noise that cleanses and noise that destroys. Between solitude that brings peace and isolation that breaks you. Between a living being you can reach out to and a person who has lost the ability to feel.</p>
+        <p>If there were no death, the sense of time would vanish. If there were no pain, the value of peace would vanish. If there were no evil, good would cease to be a choice, and good itself would lose its value, becoming what evil once was. If there were no silence, noise would lose its form. If there were no noise, silence would cease to be something tangible and necessary. Everything exists only because it has an opposite.</p>
+        <p>Contrast is not conflict for conflict’s sake, but a way of coexisting. It is what makes any feeling real, rather than a simulation. Only in this way can one feel true love, admiration, peace, and happiness. It is what allows us to distinguish acceptance from indifference, and freedom from confinement.</p>
+        <p>You don’t have to reduce everything to a single thing. What matters is that there is something at all. There’s little worse than emptiness.</p>
+        <p><span class="highlight">One phenomenon gains meaning through another.</span></p>
+    </section>
 
     <section>
         <h2>Recent Notes</h2>
-        <p>Sometimes I wonder why we keep building more noise. The internet was supposed to connect us, but it mostly <span class="highlight">isolates</span>.</p>
-        <p>Anyway. Here I just put things that matter to me. No performance. No audience in mind.</p>
+        
     </section>
 
     <div class="image-container">
         <img src="https://horreur.com/sites/default/files/styles/large/public/Niku-Daruma-Psycho-Snuff-Reels-Tumbling-Doll-of-Flesh-movie-6_0.jpg?itok=hqk7Pnih" alt="Work 2">
-        <p class="work-title">Contrast • 2024</p>
-        <p>I am drawn to the <span class="highlight">beauty of contrast</span>. The sharp line between light and darkness, between violence and peace, between noise and stillness. I look for it everywhere.</p>
-
-    </div>
+        </div>
 
     <div class="footer">
         <a href="/writing">→ read all entries</a>
