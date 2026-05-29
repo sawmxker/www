@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www.nms</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/about/about.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="terminal-header">
+            <a href="index.html" class="terminal-dot red"></a>
+            <div class="terminal-dot yellow"></div>
+            <div class="terminal-dot green"></div>
+            <span class="terminal-title">About — -zsh — 80×26</span>
+        </div>
+
+        <div class="terminal-line last-login" id="last-login"></div>
+
+        <div class="terminal-line">
+            <span class="prompt-host">sawmxker@MacBook-Air-nms</span>
+            <span class="prompt-path"> about </span>
+            <span class="prompt-symbol">%</span>
+            <span class="cmd"> cat About.txt</span>
+        </div>
+
+        <div class="terminal-line">
+            <div class="output">
+                <p>About</p>
+            </div>
+        </div>
+
+        <div class="terminal-line">
+            <div class="output">
+                <p>www.nms is an experimental web space, a publicly accessible personal web archive that expresses my thoughts and everything that is hard to describe in a single word.</p>
+            </div>
+        </div>
+
+        <div class="terminal-line">
+            <div class="output">
+                <p>A quiet corner of the internet, created using simple code. Not everything here is meant to be understood or completed.</p>
+            </div>
+        </div>
+
+        <div class="terminal-line">
+            <div class="output highlight-percent">
+                <p>A quiet corner of the internet, created using simple code. Not everything here is meant to be understood or completed.<span class="pct">%</span></p>
+            </div>
+        </div>
+
+        <div class="terminal-line">
+            <span class="prompt-host">sawmxker@MacBook-Air-nms</span>
+            <span class="prompt-path"> about </span>
+            <span class="prompt-symbol">%</span>
+            <span class="cmd"> ls pages/</span>
+        </div>
+
+        <div class="terminal-line">
+            <div class="output">
+                <p><a href="mydigital.html" class="link">mydigital/</a></p>
+            </div>
+        </div>
+
+        <div class="terminal-line">
+            <span class="prompt-host">sawmxker@MacBook-Air-nms</span>
+            <span class="prompt-path"> about </span>
+            <span class="prompt-symbol">% </span>
+            <span class="cursor-blink"></span>
+        </div>
+    </div>
+
+    <script>
+        const now = new Date();
+        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+        const month = months[now.getMonth()];
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('last-login').textContent = `Last login: ${month} ${day} ${hours}:${minutes}:${seconds} on ttys001`;
+
+        function updateTerminalSize() {
+            const title = document.querySelector('.terminal-title');
+            const terminal = document.querySelector('.terminal');
+            const bodyStyle = getComputedStyle(document.body);
+            const fontSize = parseFloat(bodyStyle.fontSize);
+            const lineHeight = parseFloat(bodyStyle.lineHeight) || fontSize * 1.7;
+
+            const measure = document.createElement('span');
+            measure.style.cssText = `font-family: "JetBrains Mono", "SF Mono", Menlo, monospace; font-size: ${fontSize}px; visibility: hidden; position: absolute; white-space: nowrap;`;
+            measure.textContent = 'W';
+            document.body.appendChild(measure);
+            const charWidth = measure.getBoundingClientRect().width;
+            document.body.removeChild(measure);
+
+            const cols = Math.floor(terminal.getBoundingClientRect().width / charWidth);
+            const rows = Math.floor(window.innerHeight / lineHeight);
+            title.textContent = `About — -zsh — ${cols}×${rows}`;
+        }
+
+        updateTerminalSize();
+        window.addEventListener('resize', updateTerminalSize);
+
+        const terminal = document.querySelector('.terminal');
+        const header = document.querySelector('.terminal-header');
+        let isDragging = false, startX, startY, origX, origY;
+
+        function centerTerminal() {
+            const w = terminal.offsetWidth;
+            const h = terminal.offsetHeight;
+            terminal.style.left = Math.max(0, (window.innerWidth - w) / 2) + 'px';
+            terminal.style.top = Math.max(0, (window.innerHeight - h) / 2) + 'px';
+        }
+
+        if (!localStorage.getItem('termX')) {
+            centerTerminal();
+        } else {
+            terminal.style.left = localStorage.getItem('termX') + 'px';
+            terminal.style.top = localStorage.getItem('termY') + 'px';
+        }
+
+        header.addEventListener('mousedown', function(e) {
+            if (e.target.classList.contains('terminal-dot') || e.target.closest('a')) return;
+            isDragging = true;
+            const rect = terminal.getBoundingClientRect();
+            startX = e.clientX;
+            startY = e.clientY;
+            origX = rect.left;
+            origY = rect.top;
+            terminal.style.left = origX + 'px';
+            terminal.style.top = origY + 'px';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function(e) {
+            if (!isDragging) return;
+            const maxX = window.innerWidth - terminal.offsetWidth;
+            const maxY = window.innerHeight - terminal.offsetHeight;
+            terminal.style.left = Math.min(Math.max(0, origX + (e.clientX - startX)), maxX) + 'px';
+            terminal.style.top = Math.min(Math.max(0, origY + (e.clientY - startY)), maxY) + 'px';
+        });
+
+        document.addEventListener('mouseup', function() {
+            if (!isDragging) return;
+            isDragging = false;
+            localStorage.setItem('termX', parseFloat(terminal.style.left));
+            localStorage.setItem('termY', parseFloat(terminal.style.top));
+        });
+    </script>
+</body>
+</html>
