@@ -33,6 +33,7 @@
             max-width: 760px;
             margin: 0 auto;
             padding: 40px 20px 80px;
+            overflow-x: hidden;
         }
 
         header {
@@ -246,6 +247,120 @@
         .music-card .artist-name {
             font-size: 1rem;
             opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 24px 24px 60px;
+                font-size: 16px;
+            }
+
+            h1 {
+                font-size: 3.2rem;
+                letter-spacing: -2px;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                gap: 14px 20px;
+                font-size: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .dog-image {
+                margin: 120px auto;
+            }
+
+            .blue-square {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+                aspect-ratio: 1 / 1;
+            }
+
+            .music-card {
+                padding: 12px;
+            }
+
+            .music-card .album-art {
+                width: 65px;
+                height: 65px;
+                margin-right: 14px;
+            }
+
+            .music-card .track-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 16px 20px 48px;
+                font-size: 15px;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+                letter-spacing: -1.5px;
+            }
+
+            nav {
+                gap: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            h2 {
+                font-size: 1.3rem;
+            }
+
+            .hero {
+                margin: 0 -4px;
+                width: calc(100% + 8px);
+            }
+
+            .dog-image {
+                margin: 80px auto;
+            }
+
+            .image-container img {
+                margin: 0 -4px;
+                width: calc(100% + 8px);
+            }
+
+            .music-card .album-art {
+                width: 55px;
+                height: 55px;
+                margin-right: 10px;
+            }
+
+            .music-card .track-title {
+                font-size: 1.1rem;
+            }
+
+            .music-card .artist-avatar {
+                width: 14px;
+                height: 14px;
+            }
+
+            .music-card .artist-name {
+                font-size: 0.85rem;
+            }
+
+            .footer {
+                margin-top: 50px;
+                font-size: 0.95rem;
+            }
+
+            .caption {
+                font-size: 0.85rem;
+            }
         }
     </style>
 </head>
