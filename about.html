@@ -89,9 +89,14 @@
         function updateTerminalSize() {
             const style = getComputedStyle(document.body);
             const fontSize = parseFloat(style.fontSize);
-            const lineHeight = parseFloat(style.lineHeight) || fontSize * 1.6;
+            const lineHeight = parseFloat(style.lineHeight) || fontSize * 1.7;
 
-            const charWidth = fontSize * 0.6;
+            const measure = document.createElement('span');
+            measure.style.cssText = `font-family: "JetBrains Mono", "SF Mono", Menlo, monospace; font-size: ${fontSize}px; visibility: hidden; position: absolute; white-space: nowrap;`;
+            measure.textContent = 'W';
+            document.body.appendChild(measure);
+            const charWidth = measure.getBoundingClientRect().width;
+            document.body.removeChild(measure);
 
             const cols = Math.floor(terminal.getBoundingClientRect().width / charWidth);
             const rows = Math.floor(terminal.getBoundingClientRect().height / lineHeight);
@@ -165,6 +170,44 @@
         });
 
         document.addEventListener('mouseup', () => {
+            if (!dragging) return;
+            dragging = false;
+
+            savePosition(
+                parseFloat(terminal.style.left),
+                parseFloat(terminal.style.top)
+            );
+        });
+
+        header.addEventListener('touchstart', (e) => {
+            if (e.target.closest('a')) return;
+
+            dragging = true;
+
+            const rect = terminal.getBoundingClientRect();
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+            baseX = rect.left;
+            baseY = rect.top;
+        });
+
+        document.addEventListener('touchmove', (e) => {
+            if (!dragging) return;
+
+            const dx = e.touches[0].clientX - startX;
+            const dy = e.touches[0].clientY - startY;
+
+            const maxX = window.innerWidth - terminal.offsetWidth;
+            const maxY = window.innerHeight - terminal.offsetHeight;
+
+            const x = Math.min(Math.max(0, baseX + dx), maxX);
+            const y = Math.min(Math.max(0, baseY + dy), maxY);
+
+            terminal.style.left = x + 'px';
+            terminal.style.top = y + 'px';
+        });
+
+        document.addEventListener('touchend', () => {
             if (!dragging) return;
             dragging = false;
 
