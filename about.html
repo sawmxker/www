@@ -27,9 +27,7 @@
         </div>
 
         <div class="terminal-line">
-            <div class="output">
-                <p>About</p>
-            </div>
+            <div class="output"><p>About</p></div>
         </div>
 
         <div class="terminal-line">
@@ -39,14 +37,11 @@
         </div>
 
         <div class="terminal-line">
-            <div class="output">
-                <p>A quiet corner of the internet, created using simple code. Not everything here is meant to be understood or completed.</p>
-            </div>
-        </div>
-
-        <div class="terminal-line">
             <div class="output highlight-percent">
-                <p>A quiet corner of the internet, created using simple code. Not everything here is meant to be understood or completed.<span class="pct">%</span></p>
+                <p>
+                    A quiet corner of the internet, created using simple code. Not everything here is meant to be understood or completed.
+                    <span class="pct">%</span>
+                </p>
             </div>
         </div>
 
@@ -59,6 +54,7 @@
 
         <div class="terminal-line">
             <div class="output">
+                <p><a href="index.html" class="link">index.html/</a></p>
                 <p><a href="mydigital.html" class="link">mydigital/</a></p>
             </div>
         </div>
@@ -72,82 +68,117 @@
     </div>
 
     <script>
-        const now = new Date();
-        const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-        const month = months[now.getMonth()];
-        const day = String(now.getDate()).padStart(2, '0');
-        const hours = String(now.getHours()).padStart(2, '0');
-        const minutes = String(now.getMinutes()).padStart(2, '0');
-        const seconds = String(now.getSeconds()).padStart(2, '0');
-        document.getElementById('last-login').textContent = `Last login: ${month} ${day} ${hours}:${minutes}:${seconds} on ttys001`;
+        const terminal = document.querySelector('.terminal');
+        const header = document.querySelector('.terminal-header');
+        const title = document.querySelector('.terminal-title');
+
+        function setLastLogin() {
+            const now = new Date();
+            const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+            const text =
+                `Last login: ${months[now.getMonth()]} ` +
+                `${String(now.getDate()).padStart(2,'0')} ` +
+                `${String(now.getHours()).padStart(2,'0')}:` +
+                `${String(now.getMinutes()).padStart(2,'0')}:` +
+                `${String(now.getSeconds()).padStart(2,'0')} on ttys001`;
+
+            document.getElementById('last-login').textContent = text;
+        }
 
         function updateTerminalSize() {
-            const title = document.querySelector('.terminal-title');
-            const terminal = document.querySelector('.terminal');
-            const bodyStyle = getComputedStyle(document.body);
-            const fontSize = parseFloat(bodyStyle.fontSize);
-            const lineHeight = parseFloat(bodyStyle.lineHeight) || fontSize * 1.7;
+            const style = getComputedStyle(document.body);
+            const fontSize = parseFloat(style.fontSize);
+            const lineHeight = parseFloat(style.lineHeight) || fontSize * 1.6;
 
-            const measure = document.createElement('span');
-            measure.style.cssText = `font-family: "JetBrains Mono", "SF Mono", Menlo, monospace; font-size: ${fontSize}px; visibility: hidden; position: absolute; white-space: nowrap;`;
-            measure.textContent = 'W';
-            document.body.appendChild(measure);
-            const charWidth = measure.getBoundingClientRect().width;
-            document.body.removeChild(measure);
+            const charWidth = fontSize * 0.6;
 
             const cols = Math.floor(terminal.getBoundingClientRect().width / charWidth);
-            const rows = Math.floor(window.innerHeight / lineHeight);
+            const rows = Math.floor(terminal.getBoundingClientRect().height / lineHeight);
+
             title.textContent = `About — -zsh — ${cols}×${rows}`;
         }
 
-        updateTerminalSize();
-        window.addEventListener('resize', updateTerminalSize);
-
-        const terminal = document.querySelector('.terminal');
-        const header = document.querySelector('.terminal-header');
-        let isDragging = false, startX, startY, origX, origY;
-
         function centerTerminal() {
-            const w = terminal.offsetWidth;
-            const h = terminal.offsetHeight;
-            terminal.style.left = Math.max(0, (window.innerWidth - w) / 2) + 'px';
-            terminal.style.top = Math.max(0, (window.innerHeight - h) / 2) + 'px';
+            const rect = terminal.getBoundingClientRect();
+
+            const x = Math.max(0, (window.innerWidth - rect.width) / 2);
+            const y = Math.max(0, (window.innerHeight - rect.height) / 2);
+
+            terminal.style.left = x + 'px';
+            terminal.style.top = y + 'px';
+
+            savePosition(x, y);
         }
 
-        if (!localStorage.getItem('termX')) {
-            centerTerminal();
-        } else {
-            terminal.style.left = localStorage.getItem('termX') + 'px';
-            terminal.style.top = localStorage.getItem('termY') + 'px';
+        function savePosition(x, y) {
+            localStorage.setItem('termX', String(x));
+            localStorage.setItem('termY', String(y));
         }
 
-        header.addEventListener('mousedown', function(e) {
-            if (e.target.classList.contains('terminal-dot') || e.target.closest('a')) return;
-            isDragging = true;
+        function loadPosition() {
+            const x = localStorage.getItem('termX');
+            const y = localStorage.getItem('termY');
+
+            if (x !== null && y !== null) {
+                terminal.style.left = x + 'px';
+                terminal.style.top = y + 'px';
+            } else {
+                centerTerminal();
+            }
+        }
+
+        let dragging = false;
+        let startX = 0;
+        let startY = 0;
+        let baseX = 0;
+        let baseY = 0;
+
+        header.addEventListener('mousedown', (e) => {
+            if (e.target.closest('a')) return;
+
+            dragging = true;
+
             const rect = terminal.getBoundingClientRect();
             startX = e.clientX;
             startY = e.clientY;
-            origX = rect.left;
-            origY = rect.top;
-            terminal.style.left = origX + 'px';
-            terminal.style.top = origY + 'px';
+            baseX = rect.left;
+            baseY = rect.top;
+
             e.preventDefault();
         });
 
-        document.addEventListener('mousemove', function(e) {
-            if (!isDragging) return;
+        document.addEventListener('mousemove', (e) => {
+            if (!dragging) return;
+
+            const dx = e.clientX - startX;
+            const dy = e.clientY - startY;
+
             const maxX = window.innerWidth - terminal.offsetWidth;
             const maxY = window.innerHeight - terminal.offsetHeight;
-            terminal.style.left = Math.min(Math.max(0, origX + (e.clientX - startX)), maxX) + 'px';
-            terminal.style.top = Math.min(Math.max(0, origY + (e.clientY - startY)), maxY) + 'px';
+
+            const x = Math.min(Math.max(0, baseX + dx), maxX);
+            const y = Math.min(Math.max(0, baseY + dy), maxY);
+
+            terminal.style.left = x + 'px';
+            terminal.style.top = y + 'px';
         });
 
-        document.addEventListener('mouseup', function() {
-            if (!isDragging) return;
-            isDragging = false;
-            localStorage.setItem('termX', parseFloat(terminal.style.left));
-            localStorage.setItem('termY', parseFloat(terminal.style.top));
+        document.addEventListener('mouseup', () => {
+            if (!dragging) return;
+            dragging = false;
+
+            savePosition(
+                parseFloat(terminal.style.left),
+                parseFloat(terminal.style.top)
+            );
         });
+
+        window.addEventListener('resize', updateTerminalSize);
+
+        setLastLogin();
+        updateTerminalSize();
+        loadPosition();
     </script>
 </body>
 </html>
