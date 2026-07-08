@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>www.nms</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/about/about.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/pages/about.css">
 </head>
 <body>
     <div class="terminal">
         <div class="terminal-header">
-            <a href="index.html" class="terminal-dot red"></a>
+            <a href="../index.html" class="terminal-dot red"></a>
             <div class="terminal-dot yellow"></div>
             <div class="terminal-dot green"></div>
             <span class="terminal-title">About — -zsh — 80×26</span>
@@ -54,8 +54,8 @@
 
         <div class="terminal-line">
             <div class="output">
-                <p><a href="index.html" class="link">index.html/</a></p>
-                <p><a href="mydigital.html" class="link">mydigital/</a></p>
+                <p><a href="../index.html" class="link">index.html/</a></p>
+                <p><a href="../mydigital/index.html" class="link">mydigital/</a></p>
             </div>
         </div>
 
@@ -126,10 +126,33 @@
             const y = localStorage.getItem('termY');
 
             if (x !== null && y !== null) {
-                terminal.style.left = x + 'px';
-                terminal.style.top = y + 'px';
+                const px = parseFloat(x);
+                const py = parseFloat(y);
+                const maxX = window.innerWidth - terminal.offsetWidth;
+                const maxY = window.innerHeight - terminal.offsetHeight;
+
+                if (px > maxX || py > maxY || px < 0 || py < 0) {
+                    centerTerminal();
+                } else {
+                    terminal.style.left = px + 'px';
+                    terminal.style.top = py + 'px';
+                }
             } else {
                 centerTerminal();
+            }
+        }
+
+        function clampPosition() {
+            const curX = parseFloat(terminal.style.left) || 0;
+            const curY = parseFloat(terminal.style.top) || 0;
+            const maxX = window.innerWidth - terminal.offsetWidth;
+            const maxY = window.innerHeight - terminal.offsetHeight;
+
+            if (curX > maxX || curY > maxY) {
+                const x = Math.min(curX, maxX);
+                const y = Math.min(curY, maxY);
+                terminal.style.left = Math.max(0, x) + 'px';
+                terminal.style.top = Math.max(0, y) + 'px';
             }
         }
 
@@ -217,7 +240,10 @@
             );
         });
 
-        window.addEventListener('resize', updateTerminalSize);
+        window.addEventListener('resize', () => {
+            updateTerminalSize();
+            clampPosition();
+        });
 
         setLastLogin();
         updateTerminalSize();

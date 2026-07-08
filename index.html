@@ -5,376 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>www.nms</title>
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap">
-    
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        img {
-            -webkit-user-drag: none;
-            user-select: none;
-            -moz-user-select: none;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            pointer-events: none;
-        }
-        a img {
-            pointer-events: none;
-        }
-        ::selection {
-            background: rgba(0, 0, 255);
-            color: #ffffff;
-        }
-        ::-moz-selection {
-            background: rgba(0, 0, 255);
-            color: #ffffff;
-        }
-
-        body {
-            background: #000000;
-            color: #ffffff;
-            font-family: 'Zen Old Mincho', serif;
-            line-height: 1.7;
-            font-size: 18px;
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 40px 20px 80px;
-            overflow-x: hidden;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        h1 {
-            font-size: 5.5rem;
-            font-weight: 700;
-            letter-spacing: -4px;
-            line-height: 1;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.15rem;
-            color: #ffffff;
-            opacity: 0.7;
-            margin-bottom: 40px;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 60px;
-            font-size: 1.1rem;
-        }
-
-        nav a {
-            color: rgba(0, 0, 255);
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-
-        nav a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-            text-underline-offset: 6px;
-        }
-
-        .hero {
-            width: 100%;
-            margin-bottom: 10px;
-        }
-
-        .caption {
-            font-size: 0.95rem;
-            color: #ffffff;
-            opacity: 0.6;
-            text-align: right;
-            margin-bottom: 20px;
-        }
-
-        section {
-            margin-bottom: 40px;
-        }
-
-        h2 {
-            font-size: 1.85rem;
-            margin-bottom: 20px;
-        }
-
-        p {
-            margin-bottom: -4px;
-        }
-
-        .highlight {
-            background: rgba(0, 0, 255);
-            padding: 0px 2px;
-            box-decoration-break: clone;
-            display: inline;
-        }
-
-        .image-container {
-            margin: 40px 0;
-        }
-
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border: 1px solid #000;
-        }
-
-        .work-title {
-            font-size: 1.15rem;
-            margin-top: 10px;
-            color: #fff;
-            text-align: center;
-        }
-
-        .footer {
-            text-align: center;
-            margin-top: 80px;
-            font-size: 1.1rem;
-        }
-
-        .footer a {
-            color: rgba(0, 0, 255);
-            text-decoration: none;
-        }
-
-        .footer a:hover {
-            color: #fff;
-        }
-
-        .dog-image {
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            display: block;
-            margin: 240px auto;
-        }
-
-        .blue-square {
-            width: 400px;
-            height: 400px;
-            background: rgb(0, 0, 255);
-            margin: 20px auto;
-            display: block;
-        }
-
-        .caption-link {
-            color: #ffffff !important;
-            opacity: 1 !important;
-            text-decoration: none;
-        }
-        .caption-link:hover {
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .music-card {
-            display: flex;
-            align-items: center;
-            --grad-angle: 180deg;
-            --color-1: #474b8f;
-            --color-2: #202456;
-            
-            background: linear-gradient(var(--grad-angle), var(--color-1) 0%, var(--color-2) 100%);
-            border: 2px solid #282868;
-            border-radius: 18px;
-            padding: 14px;
-            text-decoration: none;
-            color: white;
-            width: 100%;
-            max-width: 800px;
-            margin: 30px 0;            
-            transition: --color-1 0.75s ease, --color-2 0.5s ease;
-        }
-
-        .music-card:hover {
-            --grad-angle: 180deg;
-            --color-1: #202456;
-            --color-2: #00f;
-        }
-
-        @property --color-1 {
-        syntax: '<color>';
-        initial-value: #474b8f;
-        inherits: false;
-        }
-
-        @property --color-2 {
-        syntax: '<color>';
-        initial-value: #202456;
-        inherits: false;
-        }
-
-        .music-card .album-art {
-            width: 85px;
-            height: 85px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin-right: 18px;
-            transition: opacity 0.3s ease;
-        }
-
-        .music-card .album-art:hover {
-            opacity: 0.6;
-        }
-
-        .music-card .info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .music-card .track-title {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.1;
-        }
-
-        .music-card .artist-row {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .music-card .artist-avatar {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-
-        .music-card .artist-name {
-            font-size: 1rem;
-            opacity: 0.8;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 24px 24px 60px;
-                font-size: 16px;
-            }
-
-            h1 {
-                font-size: 3.2rem;
-                letter-spacing: -2px;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            nav {
-                flex-wrap: wrap;
-                gap: 14px 20px;
-                font-size: 1rem;
-            }
-
-            h2 {
-                font-size: 1.5rem;
-            }
-
-            .dog-image {
-                margin: 120px auto;
-            }
-
-            .blue-square {
-                width: 100%;
-                max-width: 400px;
-                height: auto;
-                aspect-ratio: 1 / 1;
-            }
-
-            .music-card {
-                padding: 12px;
-            }
-
-            .music-card .album-art {
-                width: 65px;
-                height: 65px;
-                margin-right: 14px;
-            }
-
-            .music-card .track-title {
-                font-size: 1.3rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            body {
-                padding: 16px 20px 48px;
-                font-size: 15px;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-                letter-spacing: -1.5px;
-            }
-
-            nav {
-                gap: 10px 16px;
-                font-size: 0.9rem;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            .hero {
-                margin: 0 -4px;
-                width: calc(100% + 8px);
-            }
-
-            .dog-image {
-                margin: 80px auto;
-            }
-
-            .image-container img {
-                margin: 0 -4px;
-                width: calc(100% + 8px);
-            }
-
-            .music-card .album-art {
-                width: 55px;
-                height: 55px;
-                margin-right: 10px;
-            }
-
-            .music-card .track-title {
-                font-size: 1.1rem;
-            }
-
-            .music-card .artist-avatar {
-                width: 14px;
-                height: 14px;
-            }
-
-            .music-card .artist-name {
-                font-size: 0.85rem;
-            }
-
-            .footer {
-                margin-top: 50px;
-                font-size: 0.95rem;
-            }
-
-            .caption {
-                font-size: 0.85rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/global.css">
 </head>
 <body>
 
@@ -382,7 +13,7 @@
         <h1>www.nms</h1>
         <p class="subtitle">personal archive • 2026</p>
         <div class="image-container">
-            <img src="dog.png" alt="Dog" draggable="false" class="dog-image">
+            <img src="assets/icons/dog.png" alt="" draggable="false" class="dog-image">
         </div>
     </header>
 
@@ -390,7 +21,7 @@
         <a href="/projects">/projects</a>
         <a href="/works">/works</a>
         <a href="/writing">/writting</a>
-        <a href="about.html">/about</a>
+        <a href="about/index.html">/about</a>
         <a href="/roll">/cameraroll</a>
         <a href="/contrast">/contrast</a>
         <a href="/code">/code</a>
@@ -402,13 +33,15 @@
         </p>
     </section>
 
-    <section>        
-        <p>I appreciate silence. The sound of people talking makes me anxious. But <span class="highlight">noise (like harsh noise)</span> helps me stop thinking and calm down.</p>        
+    <section>
+        <p>I appreciate silence. The sound of people talking makes me anxious. But <span class="highlight">noise (like harsh noise)</span> helps me stop thinking and calm down.</p>
         <p>For a long time, music didn’t mean much to me. As a child, it seemed like a nuisance that annoyed me. When I started listening to music intentionally, it felt more awkward than natural. I didn’t have my own musical tastes; I listened to whatever was available—whatever I heard from friends or found online. But over time, sound became essential to me. Now I’d call myself a music lover, but that word isn’t quite accurate. I can listen to any kind of music—my playlists are very diverse—but I have a clear preference for certain genres, and it’s not random.</p>
+
         <div class="image-container">
-            <img src="phlpshps.webp" alt="Work 1" style="max-width: 160px; width: 100%; display: block; margin: 0 auto;">
+            <img src="assets/images/phlpshps.webp" alt="Headphones-liners Philips SHE1350/00" style="max-width: 160px; width: 100%; display: block; margin: 0 auto;">
             <p class="caption">Headphones-liners Philips SHE1350/00</p>
         </div>
+
         <p>The starting point was around 2021, when I started listening to breakcore. It was aggressive, raw, and overloaded music, but there was something alive in it that drew me to it. Gradually, my interest deepened. I moved from more accessible stuff to still-popular subgenres, like lolicore. Artists like loli in early 20s, goreshit, and the like became the next stage. There, the sound became even more fragmented, emotionally intense, and strange.</p>
         <p>Then I started moving toward an even more experimental electronic scene. Squarepusher, Venetian Snares—especially the album “Songs About My Cats” with the track “Chinaski”—became an important part of this transition. In their work, you could already sense complete chaos, but also structure and complexity. </p>
         <p>Alongside my interest in experimental film, I discovered <span class="highlight">noise music.</span> Merzbow was one of the first artists I encountered. It was a whole new level of experience. No rhythmic melodies, just <span class="highlight">pure sound texture.</span> Harsh noise doesn’t overwhelm; on the contrary, it clears the mind. There’s no familiar logic to it, and that’s exactly why it helps me stop the flow of thoughts.</p>
@@ -432,8 +65,8 @@
     </section>
 
     <section>
-        <img src="src/photos/IMG_4589.jpg" alt="Noctuidae" class="hero">
-        <p class="caption">Noctuidae • June 28, 2024</p>    
+        <img src="assets/photos/IMG_4589.jpg" alt="Noctuidae" class="hero">
+        <p class="caption">Noctuidae • June 28, 2024</p>
     </section>
 
     <section>
@@ -443,10 +76,10 @@
     </section>
     <section><p>I don’t want my life or my words to push anyone toward violence, even indirectly. The world is already full of pain—why multiply it?</p></section>
     <section>
-        <p>I see how Nazism and mutual hatred are quietly seeping into teenagers’ minds through what people like to call “ironic” content. One click—and there’s a “funny” meme with a swastika, a “joke” about “racial purity” that actually teaches people to hate “outsiders” quite clearly. <span class="highlight">People use humor to mask real hostility,</span> and it’s disgusting. Even if at first it might seem like something truly harmless, sooner or later it comes to the point where this person gets upset that “you can’t even give a proper Nazi salute on the internet these days.” And people—or simply impressionable minds who haven’t yet learned to filter out the poison—absorb this as the norm. Then it escalates into actual words, then into actions (for example, in the 2025–2026 school year alone, 18 armed attacks on educational institutions were recorded in Russia. Moreover, according to the Ministry of Internal Affairs, 13 such attacks occurred between January and April 2026 alone.) against those whom they deem weak or simply unworthy of life. I believe that any form of promoting Nazism is a crime against the future and an excuse for crimes against humanity. Because Nazism did not die in 1945; it simply changed form.</p>    
-        <p>It all follows a chain: racism, xenophobia, war, murder, violence. These are all different facets of the same problem. When you start dividing people into “us” and “them” based on skin color, nationality, religion, or simply where they come from—you’ve already opened the door to evil.</p>    
-        <p>And here I come to what has become a personal example of <span class="highlight">anti-hatred</span> for me: the color blue in my website’s design. I used to just can’t stand it. It seemed “not my thing” to me. But over time, I started experimenting: pairing blue with warm shades—orange, yellow, burgundy. And suddenly I noticed how it came to life, how it added depth and calm.</p>    
-        <p>Gradually, blue stopped being “that one color I don’t like” and became one of the strongest and most beautiful in my palette. It now symbolizes for me precisely this anti-hatred: I don’t reject what initially repelled me, but give it a chance to reveal itself in a new way. It’s a small but very personal <span class="highlight">act of overcoming prejudice.</span></p>    
+        <p>I see how Nazism and mutual hatred are quietly seeping into teenagers’ minds through what people like to call “ironic” content. One click—and there’s a “funny” meme with a swastika, a “joke” about “racial purity” that actually teaches people to hate “outsiders” quite clearly. <span class="highlight">People use humor to mask real hostility,</span> and it’s disgusting. Even if at first it might seem like something truly harmless, sooner or later it comes to the point where this person gets upset that “you can’t even give a proper Nazi salute on the internet these days.” And people—or simply impressionable minds who haven’t yet learned to filter out the poison—absorb this as the norm. Then it escalates into actual words, then into actions (for example, in the 2025–2026 school year alone, 18 armed attacks on educational institutions were recorded in Russia. Moreover, according to the Ministry of Internal Affairs, 13 such attacks occurred between January and April 2026 alone.) against those whom they deem weak or simply unworthy of life. I believe that any form of promoting Nazism is a crime against the future and an excuse for crimes against humanity. Because Nazism did not die in 1945; it simply changed form.</p>
+        <p>It all follows a chain: racism, xenophobia, war, murder, violence. These are all different facets of the same problem. When you start dividing people into “us” and “them” based on skin color, nationality, religion, or simply where they come from—you’ve already opened the door to evil.</p>
+        <p>And here I come to what has become a personal example of <span class="highlight">anti-hatred</span> for me: the color blue in my website’s design. I used to just can’t stand it. It seemed “not my thing” to me. But over time, I started experimenting: pairing blue with warm shades—orange, yellow, burgundy. And suddenly I noticed how it came to life, how it added depth and calm.</p>
+        <p>Gradually, blue stopped being “that one color I don’t like” and became one of the strongest and most beautiful in my palette. It now symbolizes for me precisely this anti-hatred: I don’t reject what initially repelled me, but give it a chance to reveal itself in a new way. It’s a small but very personal <span class="highlight">act of overcoming prejudice.</span></p>
     </section>
 
     <section>
@@ -480,7 +113,7 @@
 
     <section>
         <h2>Recent Notes</h2>
-        
+
     </section>
 
     <div class="image-container">

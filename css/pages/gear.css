@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;700&display=swap');
+
+::selection {
+    background: #000;
+    color: #fff;
+}
+
+body {
+    font-family: 'IBM Plex Mono', 'Menlo', monospace;
+    background: #000;
+    color: #111;
+    font-size: 18px;
+    line-height: 1.7;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 10px;
+}
+
+.receipt {
+    width: min(570px, 100%);
+    background: #f7f5f0;
+    padding: 32px 24px;
+}
+
+.receipt-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin: 0 0 10px 0;
+}
+
+.receipt-subtitle {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin: 0 0 10px 0;
+}
+
+.receipt-date {
+    font-size: 14px;
+    color: #666;
+    margin: 2px 0;
+}
+
+.receipt-divider {
+    border: none;
+    border-top: 1px dashed #aaa;
+    margin: 14px 0;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #666;
+    margin: 0 0 6px 0;
+}
+
+section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+section li {
+    padding: 1px 0;
+    font-size: 16px;
+    color: #111;
+}
+
+section ul ul {
+    padding-left: 20px;
+}
+
+.note {
+    font-size: 13px;
+    color: #888;
+    font-style: italic;
+    padding-top: 4px;
+    margin: 0;
+}
+
+.receipt-footer {
+    text-align: center;
+    margin-top: 4px;
+}
+
+.footer-link a {
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px dotted #999;
+    font-size: 14px;
+}
+
+.footer-link a:hover {
+    color: #666;
+    border-bottom-color: #666;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 15px;
+        padding: 0;
+    }
+
+    .receipt {
+        width: 100%;
+        padding: 24px 14px;
+    }
+
+    section li {
+        font-size: 14px;
+    }
+}
