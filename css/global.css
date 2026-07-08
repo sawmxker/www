@@ -92,6 +92,106 @@ nav a:hover {
     margin-bottom: 20px;
 }
 
+.sticky-nav {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 8px 20px;
+    background: #000;
+    transition: transform 0.4s ease;
+    transform: translateY(-100%);
+}
+
+.sticky-nav.visible {
+    transform: translateY(0);
+}
+
+.sticky-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.sticky-logo img {
+    width: 36px;
+    height: auto;
+    display: block;
+    transition: filter 0.2s ease;
+}
+
+.sticky-logo:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.sticky-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+}
+
+.sticky-links::-webkit-scrollbar {
+    display: none;
+}
+
+.sticky-links a {
+    color: rgba(0, 0, 255);
+    text-decoration: none;
+    font-size: 1.05rem;
+    transition: color 0.2s;
+    padding: 2px 0;
+}
+
+.sticky-links a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+@media (max-width: 768px) {
+    .sticky-nav {
+        top: auto;
+        bottom: 0;
+        justify-content: flex-start;
+        padding: 10px 12px;
+        gap: 12px;
+        transform: translateY(100%);
+    }
+
+    .sticky-nav.visible {
+        transform: translateY(0);
+    }
+
+    .sticky-logo img {
+        width: 28px;
+        height: auto;
+    }
+
+    .sticky-logo:active img {
+        filter: brightness(0) invert(1);
+    }
+
+    .sticky-links {
+        justify-content: flex-start;
+        gap: 18px;
+        flex: 1;
+    }
+
+    .sticky-links a {
+        font-size: 0.9rem;
+        padding: 4px 0;
+    }
+}
+
 section {
     margin-bottom: 40px;
 }

@@ -9,6 +9,21 @@
 </head>
 <body>
 
+    <div class="sticky-nav" id="stickyNav">
+        <a href="#" class="sticky-logo">
+            <img src="assets/icons/dog.png" alt="logo">
+        </a>
+        <div class="sticky-links">
+            <a href="/projects">/projects</a>
+            <a href="/works">/works</a>
+            <a href="/writing">/writting</a>
+            <a href="about/index.html">/about</a>
+            <a href="/roll">/cameraroll</a>
+            <a href="/contrast">/contrast</a>
+            <a href="/code">/code</a>
+        </div>
+    </div>
+
     <header>
         <h1>www.nms</h1>
         <p class="subtitle">personal archive • 2026</p>
@@ -123,6 +138,34 @@
     <div class="footer">
         <a href="/writing">→ read all entries</a>
     </div>
+
+    <script>
+        const nav = document.getElementById('stickyNav');
+        const logo = document.querySelector('.sticky-logo');
+
+        logo.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function handleScroll() {
+            if (window.innerWidth <= 768) {
+                if (window.scrollY > window.innerHeight * 0.4) {
+                    nav.classList.add('visible');
+                } else {
+                    nav.classList.remove('visible');
+                }
+            } else {
+                if (window.scrollY > window.innerHeight * 1.5) {
+                    nav.classList.add('visible');
+                } else {
+                    nav.classList.remove('visible');
+                }
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+    </script>
 
 </body>
 </html>
