@@ -16,7 +16,7 @@
         <div class="sticky-links">
             <a href="/projects">/projects</a>
             <a href="/works">/works</a>
-            <a href="/writing">/writting</a>
+            <a href="/writing">/writing</a>
             <a href="about/index.html">/about</a>
             <a href="/roll">/cameraroll</a>
             <a href="/contrast">/contrast</a>
@@ -35,7 +35,7 @@
     <nav>
         <a href="/projects">/projects</a>
         <a href="/works">/works</a>
-        <a href="/writing">/writting</a>
+        <a href="/writing">/writing</a>
         <a href="about/index.html">/about</a>
         <a href="/roll">/cameraroll</a>
         <a href="/contrast">/contrast</a>
@@ -128,16 +128,14 @@
 
     <section>
         <h2>Recent Notes</h2>
-
-    </section>
-
-    <div class="image-container">
-        <img src="https://www.newworldencyclopedia.org/d/images/thumb/a/a4/Archaeopteryx-model.jpg/250px-Archaeopteryx-model.jpg" alt="Work 2">
+        <div class="image-container">
+            <img src="https://www.newworldencyclopedia.org/d/images/thumb/a/a4/Archaeopteryx-model.jpg/250px-Archaeopteryx-model.jpg" alt="">
         </div>
-
-    <div class="footer">
-        <a href="/writing">→ read all entries</a>
-    </div>
+    
+        <div class="footer">
+            <a href="/writing">→ read all entries</a>
+        </div>
+    </section>
 
     <script>
         const nav = document.getElementById('stickyNav');
@@ -164,7 +162,7 @@
             }
         }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
     </script>
 
 </body>

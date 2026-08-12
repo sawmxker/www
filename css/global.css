@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;700&display=swap');
 
+@property --color-1 {
+syntax: '<color>';
+initial-value: #474b8f;
+inherits: false;
+}
+
+@property --color-2 {
+syntax: '<color>';
+initial-value: #202456;
+inherits: false;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -19,11 +31,11 @@ a img {
 }
 
 ::selection {
-    background: rgba(0, 0, 255);
+    background: rgb(0, 0, 255);
     color: #ffffff;
 }
 ::-moz-selection {
-    background: rgba(0, 0, 255);
+    background: rgb(0, 0, 255);
     color: #ffffff;
 }
 
@@ -68,7 +80,7 @@ nav {
 }
 
 nav a {
-    color: rgba(0, 0, 255);
+    color: rgb(0, 0, 255);
     text-decoration: none;
     transition: all 0.2s;
 }
@@ -144,7 +156,7 @@ nav a:hover {
 }
 
 .sticky-links a {
-    color: rgba(0, 0, 255);
+    color: rgb(0, 0, 255);
     text-decoration: none;
     font-size: 1.05rem;
     transition: color 0.2s;
@@ -202,11 +214,11 @@ h2 {
 }
 
 p {
-    margin-bottom: -4px;
+    margin-bottom: 0;
 }
 
 .highlight {
-    background: rgba(0, 0, 255);
+    background: rgb(0, 0, 255);
     padding: 0px 2px;
     box-decoration-break: clone;
     display: inline;
@@ -237,7 +249,7 @@ p {
 }
 
 .footer a {
-    color: rgba(0, 0, 255);
+    color: rgb(0, 0, 255);
     text-decoration: none;
 }
 
@@ -294,18 +306,6 @@ p {
     --grad-angle: 180deg;
     --color-1: #202456;
     --color-2: #00f;
-}
-
-@property --color-1 {
-syntax: '<color>';
-initial-value: #474b8f;
-inherits: false;
-}
-
-@property --color-2 {
-syntax: '<color>';
-initial-value: #202456;
-inherits: false;
 }
 
 .music-card .album-art {
