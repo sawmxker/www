@@ -28,16 +28,18 @@ a:hover {
 }
 
 .side-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 260px;
-    flex-shrink: 0;
+    height: 100vh;
+    overflow-y: auto;
     padding: 20px 30px;
     border-right: 1px solid rgba(255, 255, 255, 0.4);
 }
 
 .side-nav ul {
     list-style: none;
-    position: sticky;
-    top: 0;
 }
 
 .side-nav li {
@@ -61,8 +63,17 @@ a:hover {
     margin: 0 -30px;
 }
 
+.side-nav .site-link {
+    padding-left: 0;
+}
+
+.side-nav .site-link a {
+    font-size: 22px;
+}
+
 .main-content {
     flex-grow: 1;
+    margin-left: 260px;
 }
 
 .content-section {
@@ -138,7 +149,9 @@ ul li {
         flex-direction: column;
     }
     .side-nav {
+        position: relative;
         width: 100%;
+        height: auto;
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.4);
         padding: 20px;
@@ -148,8 +161,8 @@ ul li {
         font-size: 22px;
     }
 
-    .side-nav ul {
-        position: static;
+    .main-content {
+        margin-left: 0;
     }
 
     .grid-2-col,
