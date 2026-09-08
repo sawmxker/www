@@ -36,6 +36,8 @@ a:hover {
 
 .side-nav ul {
     list-style: none;
+    position: sticky;
+    top: 0;
 }
 
 .side-nav li {
@@ -144,6 +146,10 @@ ul li {
 
     .side-nav a {
         font-size: 22px;
+    }
+
+    .side-nav ul {
+        position: static;
     }
 
     .grid-2-col,
