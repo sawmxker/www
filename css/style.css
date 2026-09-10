@@ -170,6 +170,10 @@ ul li {
         padding: 0;
     }
 
+    .side-nav .nav-divider {
+        margin: 0 -20px;
+    }
+
     .side-nav a {
         font-size: 22px;
     }
