@@ -19,12 +19,14 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 40px 10px;
+    overflow-x: hidden;
 }
 
 .receipt {
     width: min(570px, 100%);
-    background: #f7f5f0;
-    padding: 32px 24px;
+    background: #f5f5c8;
+    padding: 32px 24px 40px 24px;
+    position: relative;
 }
 
 .receipt-header {
@@ -80,6 +82,7 @@ section li {
     padding: 1px 0;
     font-size: 16px;
     color: #111;
+    overflow-wrap: break-word;
 }
 
 section ul ul {
@@ -145,27 +148,51 @@ section ul ul {
 }
 
 @media (max-width: 600px) {
+    html,
+    body {
+        -webkit-text-size-adjust: 100%;
+        overflow-x: hidden;
+    }
+
     body {
         font-size: 15px;
         padding: 0;
     }
 
+    h1 {
+        font-size: 22px;
+        letter-spacing: 2px;
+    }
+
     .receipt {
-        width: 100%;
-        padding: 24px 14px;
+        width: calc(100% - 16px);
+        padding: 24px 16px;
     }
 
     .receipt-divider {
-        margin: 14px -14px;
+        margin: 14px -16px;
     }
 
     .receipt-subtitle {
-        margin-right: -14px;
-        margin-left: -14px;
+        margin-right: -16px;
+        margin-left: -16px;
     }
 
     section li {
         font-size: 14px;
+        padding: 2px 0;
+    }
+
+    .link-note {
+        font-size: 13px;
+    }
+
+    .footer-link a {
+        font-size: 14px;
+    }
+
+    section ul ul {
+        padding-left: 12px;
     }
 
     .page-footer {
@@ -181,10 +208,4 @@ section ul ul {
     .page-bottom {
         padding: 100px 14px 4px 14px;
     }
-}
-.receipt {
-    width: min(570px, 100%);
-    background: #f5f5c8;
-    padding: 32px 24px 40px 24px;
-    position: relative;
 }
