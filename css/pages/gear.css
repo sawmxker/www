@@ -43,7 +43,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: #666;
-    margin: 0 0 10px 0;
+    margin: 0 -24px 10px -24px;
     border-bottom: 4px dotted #000;
 }
 
@@ -56,7 +56,7 @@ h1 {
 .receipt-divider {
     border: none;
     border-top: 1px dashed #aaa;
-    margin: 14px 0;
+    margin: 14px -24px;
 }
 
 h2 {
@@ -118,6 +118,15 @@ section ul ul {
     .receipt {
         width: 100%;
         padding: 24px 14px;
+    }
+
+    .receipt-divider {
+        margin: 14px -14px;
+    }
+
+    .receipt-subtitle {
+        margin-right: -14px;
+        margin-left: -14px;
     }
 
     section li {
