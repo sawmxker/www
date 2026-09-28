@@ -1,0 +1,1 @@
+gaoren:// is an experimental web project that serves as both a personal digital space and an evolving archive. The archive consists of several independent modules; each section covers its own subject and format without adhering to a common structure or visual system. The project is intentionally open-ended and is expected to grow over time.
