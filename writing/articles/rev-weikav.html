@@ -222,17 +222,11 @@
       margin: 26px 0;
     }
 
-    .missing-image {
-      display: grid;
-      place-items: center;
-      min-height: 132px;
-      padding: 20px;
-      border: 1px dashed var(--hand);
-      background: rgba(154, 150, 144, 0.14);
-      font-family: 'Caveat', cursive;
-      font-size: 20px;
-      text-align: center;
-      opacity: 0.85;
+    .review-image {
+      display: block;
+      width: 100%;
+      height: auto;
+      box-shadow: 0 8px 18px rgba(12, 12, 12, 0.12);
     }
 
     figcaption {
@@ -283,11 +277,44 @@
     }
 
     @media (max-width: 600px) {
-      .wall { padding: 44px 14px 0; }
-      .note { padding: 30px 20px 26px; margin-bottom: 36px; }
-      .tab { font-size: 15px; }
+      html, body { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
+
+      body { font-size: 15px; }
+
+      .wall { padding: 28px 8px 0; }
+
+      h1 { font-size: 1.9rem; letter-spacing: -0.6px; }
+
+      /* the notes become plain full-width sheets, like the gearlist receipt */
+      .note {
+        width: 100%;
+        padding: 28px 16px 24px;
+        margin-bottom: 28px;
+        transform: none;
+      }
+
+      .cover { padding-top: 46px; padding-bottom: 30px; }
+
+      .tab,
+      .tab--right {
+        left: 6px;
+        right: auto;
+        font-size: 15px;
+        transform: none;
+      }
+
       h3 { font-size: 1.08rem; }
-      .sticker { margin-left: 12px; font-size: 19px; max-width: calc(100% - 16px); }
+
+      /* small note stickers stay small, just lose the tilt */
+      .sticker {
+        margin-left: 0;
+        font-size: 19px;
+        max-width: 100%;
+        transform: none;
+      }
+
+      .table-wrap { -webkit-overflow-scrolling: touch; }
+
       .page-bottom { margin-top: 72px; padding-bottom: 36px; }
       .page-footer { grid-template-columns: 1fr; gap: 15px; }
       .page-footer span:first-child,
@@ -462,10 +489,11 @@
                 <td>Fn+E</td>
                 <td>Bluetooth connectivity (3)</td>
               </tr>
-              <td>Fn+R</td>
-              <td>2.4G Connection</td>
-              <td>Short press Fn+R to switch to 2.4 mode, the green light flashes slowly;<br>Press and hold Fn+R for 3 seconds, the green light will flash rapidly;<br>Enter pairing, plug in 2.4G receiver, successful connection, key light follows the light effect;<br>2.4G device name: Lucky65 V3 2.4G</td>
-            </tr>
+              <tr>
+                <td>Fn+R</td>
+                <td>2.4G Connection</td>
+                <td>Short press Fn+R to switch to 2.4 mode, the green light flashes slowly;<br>Press and hold Fn+R for 3 seconds, the green light will flash rapidly;<br>Enter pairing, plug in 2.4G receiver, successful connection, key light follows the light effect;<br>2.4G device name: Lucky65 V3 2.4G</td>
+              </tr>
             <tr>
               <td>Fn+T</td>
               <td>Wired connection</td>
@@ -490,8 +518,8 @@
       <p>Of course, I could talk a lot more about design, since I mostly looked at design choices in the first place. A big role was played by <a href="https://www.youtube.com/@danil_hi_seted">Danil HS</a>'s Baionlenja Gehirn review video <a href="https://www.youtube.com/watch?v=di8-9ssPdqQ">https://www.youtube.com/watch?v=di8-9ssPdqQ</a>, which I stumbled across completely by chance in my YouTube recommendations. In the video the author talked about the Baionlenja Gehirn, and I was incredibly taken with it: all that mystery and, precisely, the sense of things left unsaid, with its own lore — that’s something especially beautiful. The enigmatic image of Gehirn the Living Fossil, wedged beneath a keyboard, looks simply unbeatable — especially compared to what we get with the Weikav Lucky, where the clover looks really cheap.</p>
 
       <figure>
-        <div class="missing-image" role="img" aria-label="gehirn60-by-baionlenja.webp">gehirn60-by-baionlenja.webp</div>
-        <figcaption>source: <a href="https://www.reddit.com/r/MechanicalKeyboards/comments/1qerq29/gehirn60_by_baionlenja_improved_by_bowl_launched/">reddit.com/r/MechanicalKeyboards</a></figcaption>
+        <img class="review-image" src="../../assets/images/gehirn60-by-baionlenja.webp" alt="Baionlenja Gehirn 60 — custom mechanical keyboard">
+        <figcaption>source: <a href="https://www.reddit.com/r/MechanicalKeyboards/comments/1qerq29/gehirn60_by_baionlenja_improved_by_bowl_launched/">reddit.com/r/MechanicalKeyboards/,<br>u/Certain_Muscle_7700 </a></figcaption>
       </figure>
 
       <p>But of course, even though I have the money to buy a Gehirn, I decided to settle for what I picked — and besides, the price difference between them is nearly 7x, so any comparison doesn’t mean much. That said, I still think the design is very good, especially for the money: I bought a fully working, pre-built custom keyboard with an aluminum case for €60 — that’s already worth a lot. As for the Gehirn, let it remain my design reference for something I’d like to get in the future. Who knows — maybe I’ll go through more than one keyboard in the next five years.</p>
