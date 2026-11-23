@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gaoren://writing — Weikav Lucky65 V3</title>
+  <link rel="icon" type="image/png" href="../../assets/icons/favicon-32x32.png">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&display=swap');
+
+    :root {
+      --bg: #b6b680;
+      --note: #ffffb5;
+      --hand: #43678c;
+      --ink: #0c0c0c;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { background: var(--bg); }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background-color: var(--bg);
+      background-image:
+        radial-gradient(rgba(12, 12, 12, 0.05) 1px, transparent 1px),
+        linear-gradient(115deg, rgba(255, 255, 255, 0.07), transparent 45%);
+      background-size: 7px 7px, 100% 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wall {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 72px 28px 100px;
+    }
+
+    .note {
+      position: relative;
+      margin: 0 0 44px;
+      padding: 36px 34px 32px;
+      background: var(--note);
+      box-shadow:
+        0 1px 2px rgba(12, 12, 12, 0.14),
+        0 12px 24px rgba(12, 12, 12, 0.10);
+      transform: rotate(var(--tilt, 0deg));
+    }
+
+    /* piece of ribbon on top */
+    .note::before {
+      content: "";
+      position: absolute;
+      top: -11px;
+      left: 50%;
+      width: 94px;
+      height: 25px;
+      background: rgba(182, 182, 128, 0.55);
+      box-shadow: inset 0 0 0 1px rgba(12, 12, 12, 0.05);
+      transform: translateX(-50%) rotate(-2.2deg);
+    }
+
+    .tab {
+      position: absolute;
+      top: -19px;
+      left: -14px;
+      padding: 7px 12px 6px;
+      background: var(--hand);
+      color: var(--note);
+      font-family: 'Caveat', 'Segoe Print', cursive;
+      font-size: 17px;
+      line-height: 1;
+      letter-spacing: 0.3px;
+      white-space: nowrap;
+      box-shadow: 2px 2px 0 rgba(12, 12, 12, 0.16);
+      transform: rotate(var(--tab-tilt, -3deg));
+    }
+
+    .tab--right {
+      left: auto;
+      right: -12px;
+      --tab-tilt: 2.4deg;
+    }
+
+    .cover {
+      padding-top: 44px;
+      padding-bottom: 38px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      font-family: 'Caveat', cursive;
+      font-size: 19px;
+      color: var(--hand);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(2rem, 6vw, 3.1rem);
+      line-height: 1.05;
+      letter-spacing: -1.2px;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+
+    .chapter {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 60px 0 24px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    .chapter::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(12, 12, 12, 0.28);
+    }
+
+    h3 {
+      margin: 0 0 18px;
+      font-size: 1.18rem;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+    }
+
+    h3::after {
+      content: "";
+      display: block;
+      width: 42px;
+      margin-top: 8px;
+      border-bottom: 2px solid var(--hand);
+      opacity: 0.5;
+      transform: rotate(-1deg);
+    }
+
+    p { margin: 0 0 15px; }
+    p:last-child { margin-bottom: 0; }
+
+    strong { font-weight: 700; }
+
+    code {
+      padding: 1px 5px;
+      background: rgba(154, 150, 144, 0.22);
+      font-family: ui-monospace, Menlo, Consolas, monospace;
+      font-size: 0.9em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline dotted;
+      text-underline-offset: 3px;
+    }
+
+    a:hover { background: rgba(154, 150, 144, 0.2); }
+
+    /* small handwritten margin comments on coloured stickers */
+    .sticker {
+      display: block;
+      width: fit-content;
+      max-width: calc(100% - 48px);
+      margin: 16px 0 24px 40px;
+      padding: 11px 17px 13px;
+      background: var(--sticker, #ffe9a8);
+      color: #474641;
+      font-family: 'Caveat', 'Segoe Print', cursive;
+      font-size: 21px;
+      line-height: 1.22;
+      letter-spacing: 0.2px;
+      /*text-shadow: 0 0 0.7px rgba(40, 38, 34, 0.4);*/
+      box-shadow:
+        0 1px 2px rgba(12, 12, 12, 0.16),
+        0 7px 14px rgba(12, 12, 12, 0.10);
+      transform: rotate(var(--sticker-tilt, -2deg));
+    }
+
+    .sticker--yellow { --sticker: #ffe9a8; }
+    .sticker--pink   { --sticker: #ffd3df; }
+    .sticker--blue   { --sticker: #cfe3ff; }
+    .sticker--green  { --sticker: #d9efc8; }
+    .sticker--orange { --sticker: #ffe0bb; }
+    .sticker--lilac  { --sticker: #e5d8f6; }
+
+    .table-wrap {
+      margin: 22px 0 26px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    th, td {
+      padding: 7px 9px;
+      border: 1px solid rgba(154, 150, 144, 0.75);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(154, 150, 144, 0.18);
+      font-weight: 700;
+    }
+
+    figure {
+      margin: 26px 0;
+    }
+
+    .missing-image {
+      display: grid;
+      place-items: center;
+      min-height: 132px;
+      padding: 20px;
+      border: 1px dashed var(--hand);
+      background: rgba(154, 150, 144, 0.14);
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      text-align: center;
+      opacity: 0.85;
+    }
+
+    figcaption {
+      margin-top: 7px;
+      color: var(--hand);
+      font-family: 'Caveat', cursive;
+      font-size: 16px;
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .back {
+      margin-top: 56px;
+      padding: 20px 26px;
+      background: var(--note);
+      font-family: 'Caveat', cursive;
+      font-size: 20px;
+      box-shadow: 0 8px 18px rgba(12, 12, 12, 0.1);
+      transform: rotate(-0.5deg);
+    }
+
+    @media (max-width: 600px) {
+      .wall { padding: 44px 14px 64px; }
+      .note { padding: 30px 20px 26px; margin-bottom: 36px; }
+      .tab { font-size: 15px; }
+      h3 { font-size: 1.08rem; }
+      .sticker { margin-left: 12px; font-size: 19px; max-width: calc(100% - 16px); }
+    }
+  </style>
+</head>
+<body>
+  <main class="wall">
+
+    <header class="note cover" style="--tilt: -0.7deg">
+      <span class="tab" style="--tab-tilt: -3.5deg">review / day one</span>
+      <p class="eyebrow">writing / gear, my weikav experience</p>
+      <h1>Weikav Lucky65 V3</h1>
+      <p class="subtitle">last updated: November 14 2026</p>
+    </header>
+
+    <h2 class="chapter">Overview</h2>
+
+    <section class="note" style="--tilt: 0.5deg">
+      <span class="tab tab--right">01 / before</span>
+      <h3>What came before this: Red Square Keyrox TKL</h3>
+
+      <p>I bought a Red Square Keyrox about 4–5 years ago, and I haven’t had any major issues with it during that time. However, since getting a MacBook, I’ve realized that its keyboard is much more comfortable to type on than my TKL one. The TKL is bulky, the key travel is long, and the keycaps are narrow—many of them have even started to shine because I’ve simply worn them down. I don’t really use the F-keys, except perhaps for keybinds in games like Minecraft. On top of that, the keyboard lacks proper software, so I can’t remap any of the keys.</p>
+
+      <p>The cable design is absolute garbage. Whenever I lift or reposition the keyboard, the cable keeps popping out of the grooves it’s supposed to be pressed into, which makes the keyboard wobble. The stupidest part is that it’s thin enough that you don’t even notice it until you start typing. On the plus side, it’s braided—so it’s much less likely to tear—but that also means it catches on the desk surface more easily and ends up wearing down. The small power brick (or whatever that component is) also plays a role: the whole cable assembly is heavy enough to pull itself downward. Because it’s a fabric-covered cable, it’s constantly rubbing against things and snagging. This wouldn’t be an issue if they’d kept it lightweight, but it’s surprisingly heavy—especially considering the keyboard itself is plastic and weighs, I don’t know, maybe as much as 20 of these cables—which is just really bizarre.</p>
+
+      <p>Its feet are quite grippy—which should be a plus—but whenever I slide the keyboard across my desk with the feet extended (something that’s very easy to do, given how light it is—it’s almost become a habit of mine), it makes a terrible scraping noise. It’s about as loud as a rubber foot can possibly be. The switches themselves are also quite noisy. At first, I didn’t really pay much attention—they aren’t the loudest switches out there, after all, and I almost always wear headphones. But even so, compared to the keyboard on my MacBook, the noise was so noticeable that I felt uncomfortable using it at night. And that’s even though I live alone; back when I lived with my parents, I can’t recall a single day where I could type or play games late in the evening without it being an issue.</p>
+
+      <p>Sometimes the indicator lights — like Caps, SL, and NL — simply don’t work. It’s quite absurd, and neither updating the drivers nor anything else seems to fix it. This started about two years ago; I’ve mostly stopped noticing it since I don’t really look at the keyboard anyway, but it still bothers me that such a flaw exists at all. Since I’m already listing everything I don’t like, I might as well include this, too.</p>
+
+      <p>It has an open case, a skeleton. At first I thought that would actually be a plus, but it turned out to be no easier to clean — it just seems to get dirtier, and over time the shape of the case itself started to put me off visually. It looks kind of cheap.</p>
+
+      <p>The biggest con is the complete lack of replaceability. I could swap the switches and it would get quieter; I could swap the cable and that would remove another problem — but there’s no such option. Everything is soldered, and quite badly at that, considering I took it apart. You can buy keycaps, but they’re expensive and it clearly wouldn’t pay off, since it wouldn’t outweigh all the other cons.</p>
+
+      <aside class="sticker sticker--blue" style="--sticker-tilt: -2.6deg">no hot-swap, no cable swap — that's the whole problem</aside>
+    </section>
+
+    <section class="note" style="--tilt: -0.4deg; --tab-tilt: 2deg">
+      <span class="tab">02 / why 65%</span>
+      <h3>Why 65%</h3>
+
+      <p>I was choosing between 65% and 75%. Technically, the latter only differs by having an F-row, which is quite convenient in itself. However, to my regret, the vast majority of those keyboards had some kind of roller or knob, which I consider nothing short of absolute nonsense: I’m not a DJ, so I have no use for the thing, and I’m not a designer, so I can’t judge those who like it.</p>
+
+      <aside class="sticker sticker--green" style="--sticker-tilt: 2.2deg">still no idea what a knob is for</aside>
+
+      <p>I also looked at the HHKB layout. I like how it looks, and my leaning toward Emacs and Vim keybindings only fueled that. The layout itself is one of the most compact out there, while still having all the keys I need without having to constantly use a function key or something like that. But the selection of HHKB-layout boards is pretty small, and what’s out there doesn’t quite give me what I want. As for the HHKBs themselves, they have a number of quirks I won’t list here, like using AA batteries instead of a built-in rechargeable cell, which is unusual in itself. I don’t think it’s anything terribly alarming, but why bother when there are far more convenient options?</p>
+
+      <p>Of course, I looked at plenty of other layouts too — I saw a lot of split keyboards and ergonomic layouts in general, but they were just too niche. I can’t imagine a scenario where I’d use any of them on a regular basis. 65% remained the middle ground that would make my TKL keyboard more compact and spare me the drawbacks I found in the other layouts.</p>
+    </section>
+
+    <section class="note" style="--tilt: 0.35deg">
+      <span class="tab tab--right">03 / purchase</span>
+      <h3>How I got here and how I bought it</h3>
+
+      <p>I didn’t research for as long as I could have. I’d been thinking about a keyboard since, I think, the beginning of October, and I bought one around late October — early November. In reality I’d considered buying one long before that, but kept putting it off because I just didn’t see a real need for it. I believe every purchase should be justified — there has to be a reason, the thing has to be necessary. And then I realized that, yes, I needed it. I type more and more every day, whether it’s chatting with my girlfriend, writing code, or just taking notes. This is an investment that should be something new for me — but not just new; something that actually covers my needs. Someday I’ll write about that here.</p>
+
+      <p>And that’s where I got stuck. Technically, I have problems I’d like to solve, but I just couldn’t talk myself into it because I considered the purchase extravagant. I have a keyboard that already covers my needs, but I can’t say it covers the problems it creates itself. I forgot about buying one for a while and set myself a goal: if I consistently type “fast,” I’d “earn” a new keyboard, since it would effectively be an investment in a skill. I don’t type especially fast, alas, but my numbers are above average. Still, I consider them low, since I spend far more time at the computer than an average person and, accordingly, should type faster — or at least, that’s what I think. Time went by, my typing speed crept up little by little each day, but the purchase happened rather by chance: I just decided that if I didn’t do it now, I wouldn’t be able to in the coming months.</p>
+
+      <p>So my choice fell on a custom keyboard in a Weikav case. Design-wise it suited me on almost every count, and, as the seller claimed, it was completely silent. I’d actually seen the listing ages ago, but nobody had really looked at it since, and the price of €60 was still a lot for me, considering I was buying a keyboard while already owning one. To me that’s just strange. Still, I did it — breaking my own rule about increasing my typing speed first. I won’t throw around words about how it’ll boost my speed; no, I didn’t pin such hopes on it. I wanted a quiet keyboard, first and foremost for comfortable typing. After about two weeks, I got it.</p>
+
+      <aside class="sticker sticker--orange" style="--sticker-tilt: -3deg">€60, no regrets</aside>
+    </section>
+
+    <h2 class="chapter">Day One — November 14, 2026</h2>
+
+    <section class="note" style="--tilt: -0.55deg; --tab-tilt: -2deg">
+      <span class="tab">04 / sound</span>
+      <h3>First impression and sound</h3>
+
+      <p>My first impressions of the keyboard were pretty clear-cut. I was absolutely delighted by how quiet the keys were. I didn’t hear a single sound until I started typing fast enough to actually hear the switches at all. These are Haimu Heartbeats, and they’re just silent. At first I thought this was generally impossible and that the sound in person wouldn’t match the videos, but as it turned out, I was wrong. Of course, I’m not a keyboard expert and can be amazed by anything that other enthusiasts are already used to — but when you’ve stuck with one keyboard for 4+ years, the difference is incredible. With the variety on the market today, it’d be a sin to complain about anything. But of course, I have every right to.</p>
+
+      <aside class="sticker sticker--lilac" style="--sticker-tilt: 1.8deg">Haimu Heartbeat — actually silent</aside>
+    </section>
+
+    <section class="note" style="--tilt: 0.6deg">
+      <span class="tab tab--right">05 / case</span>
+      <h3>Color and case</h3>
+
+      <p>Initially I wanted a silver or black keyboard, since I thought those were the most versatile options, but red caught my eye somehow — and at the same time added a handful of doubts. I have a red mousepad, a red mouse — a red keyboard would look out of place, I thought. But to my surprise, it fit in rather well.</p>
+
+      <p>The aluminum case is something else — I can’t even describe it. It’s as if I’m holding a genuinely serious piece of work in my hands, not a toy.</p>
+
+      <aside class="sticker sticker--pink" style="--sticker-tilt: -1.7deg">red won me over</aside>
+    </section>
+
+    <section class="note" style="--tilt: -0.3deg">
+      <span class="tab" style="--tab-tilt: 3deg">06 / first day</span>
+      <h3>What I managed to do on the first day</h3>
+
+      <p>Naturally, I can’t name many technical details — I don’t understand that side of things, and my first-day experience was pretty short anyway. I wrote a little bit of code and played some World of Warcraft in the evening, around one o’clock. Again, I can’t list many pros, since I don’t know the technical side. But I did find some cons for myself on day one.</p>
+    </section>
+
+    <section class="note" style="--tilt: 0.45deg; --tab-tilt: -2.5deg">
+      <span class="tab tab--right">07 / cons</span>
+      <h3>Cons</h3>
+
+      <p><strong>The cable and the port.</strong> First, the cable. Yes, it again — but this time, I think, it’s about the port. The cable just wobbles a bit in it. That’s not terrible in itself, but it’s unpleasant, and I also always have trouble lining it up and plugging it in. There’s nothing funny about it.</p>
+
+      <p><strong>The Fn layer.</strong> Another issue is, in my view, a strange choice for Fn+. The strangest thing I noticed: <code>`</code> and <code>~</code> — I just can’t type them out of habit. I can’t explain it, but in my mind it would be much better on Esc. In any case, I can remap it. As for the other keys, using Fn+HJKL seems painful. It’s not even the keys themselves, it’s that Home and End are assigned without any logic. In the Vim layout, J and K are down and up respectively — so why, having decided to use HJKL, did you map them to K and L? Well, of course, this is nitpicking; I can change all of it through VIA. For convenience, I’ll leave my whole layout here in a table.</p>
+
+      <aside class="sticker sticker--yellow" style="--sticker-tilt: 2.6deg">note: haven't changed the keys yet — this is the stock layout</aside>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>keys</th><th>function</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>fn+1</td><td>f1</td></tr>
+            <tr><td>fn+2</td><td>f2</td></tr>
+            <tr><td>fn+3</td><td>f3</td></tr>
+            <tr><td>fn+4</td><td>f4</td></tr>
+            <tr><td>fn+5</td><td>f5</td></tr>
+            <tr><td>fn+6</td><td>f6</td></tr>
+            <tr><td>fn+7</td><td>f7</td></tr>
+            <tr><td>fn+8</td><td>f8</td></tr>
+            <tr><td>fn+9</td><td>f9</td></tr>
+            <tr><td>fn+0</td><td>f10</td></tr>
+            <tr><td>fn+_-</td><td>f11</td></tr>
+            <tr><td>fn+=+</td><td>f12</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>key combination</th><th>linux function</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fn+H</td><td>Scroll Lock</td></tr>
+            <tr><td>Fn+J</td><td>Pause Break</td></tr>
+            <tr><td>Fn+K</td><td>Home</td></tr>
+            <tr><td>Fn+L</td><td>End</td></tr>
+            <tr><td>Fn+Tab</td><td>`</td></tr>
+            <tr><td>Fn+Left Shift+Tab<br>or<br>Left Shift+Esc</td><td>~</td></tr>
+            <tr><td>Fn+M (3s)</td><td>Win/Mac switch</td></tr>
+            <tr><td>Fn+PgDn</td><td>Lock F zone</td></tr>
+            <tr><td>Fn+Esc</td><td>reset keyboard</td></tr>
+            <tr><td>Fn+Space</td><td>check battery level</td></tr>
+            <tr><td>Fn+D (3s)</td><td>D light red - lowest delay;<br>D light white - normal delay (default)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>keys</th><th>Connection method</th><th>Comment</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fn+Q</td>
+              <td>Bluetooth connectivity (1)</td>
+              <td>Short press Q/W/E to switch Bluetooth 1/2/3 channels, the blue light flashes slowly;<br>Press and hold Fn+Q/W/E for 3 seconds, and the blue light will flash rapidly;<br>Turn on the device, enter pairing, connect successfully, the key light follows the light effect;<br>Bluetooth device name: NLucky65 V3 BT-1, NLucky65 V3 BT-2, NLucky65 V3 BT-3</td>
+            </tr>
+            <tr><td>Fn+W</td><td>Bluetooth connectivity (2)</td><td>above</td></tr>
+            <tr><td>Fn+E</td><td>Bluetooth connectivity (3)</td><td>above</td></tr>
+            <tr>
+              <td>Fn+R</td>
+              <td>2.4G Connection</td>
+              <td>Short press Fn+R to switch to 2.4 mode, the green light flashes slowly;<br>Press and hold Fn+R for 3 seconds, the green light will flash rapidly;<br>Enter pairing, plug in 2.4G receiver, successful connection, key light follows the light effect;<br>2.4G device name: Lucky65 V3 2.4G</td>
+            </tr>
+            <tr>
+              <td>Fn+T</td>
+              <td>Wired connection</td>
+              <td>Short press Fn+T to switch to wired mode, white light flashes slowly, connect to data cable;<br>Wired device name: Lucky65 V3</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p><strong>The wireless mode switch.</strong> The wireless toggle hidden under the Tab key seems both convenient and inconvenient at the same time. If I ever want to take this keyboard somewhere, I think I’d have to bring a keycap puller so I can remove the key. But of course, I could just flip the switch before leaving. Either way, there are plenty of other places it could have been hidden just as easily, without sacrificing convenience.</p>
+
+      <p><strong>Backlighting instead of indicator LEDs.</strong> Using the LED backlight instead of separate indicator lights is cool on one hand, not so cool on the other. For me it’s a wash — I don’t really look at them; I have a Caps Lock indicator in the top bar on Linux, and I’ve never really had problems with that. The other indicators, honestly, I never even used. But what I can note is Control: it’s used to show the battery level, which I think is great. If it weren’t for one thing: they literally have a light strip which, again, looks like an indicator. What’s it for? Presumably only to backlight the arrow keys.</p>
+
+      <p><strong>Light strip.</strong> This was one of the main design cons that jumped out at me, but I got used to it in literally a couple of hours — I even started thinking it wasn’t such a bad design choice. Sure, you could say I’m just aiming for excessive minimalism, which is just as out of place as this light strip, but in my mind a plain, strict metal square looks like something so mesmerizing it’s hard to put into words. It’s space that we create for ourselves.</p>
+
+      <aside class="sticker sticker--green" style="--sticker-tilt: -2.2deg">weird for two hours, then invisible</aside>
+    </section>
+
+    <section class="note" style="--tilt: -0.45deg; --tab-tilt: 2.8deg">
+      <span class="tab">08 / Gehirn</span>
+      <h3>Design and Gehirn</h3>
+
+      <p>Of course, I could talk a lot more about design, since I mostly looked at design choices in the first place. A big role was played by <a href="https://www.youtube.com/@danil_hi_seted">Danil HS</a>'s Baionlenja Gehirn review video <a href="https://www.youtube.com/watch?v=di8-9ssPdqQ">https://www.youtube.com/watch?v=di8-9ssPdqQ</a>, which I stumbled across completely by chance in my YouTube recommendations. In the video the author talked about the Baionlenja Gehirn, and I was incredibly taken with it: all that mystery and, precisely, the sense of things left unsaid, with its own lore — that’s something especially beautiful. The enigmatic image of Gehirn the Living Fossil, wedged beneath a keyboard, looks simply unbeatable — especially compared to what we get with the Weikav Lucky, where the clover looks really cheap.</p>
+
+      <aside class="sticker sticker--blue" style="--sticker-tilt: 1.6deg">Gehirn is still the dream board</aside>
+
+      <!-- Put gehirn60-by-baionlenja.webp next to this file and replace the placeholder with <img> -->
+      <figure>
+        <div class="missing-image" role="img" aria-label="gehirn60-by-baionlenja.webp">gehirn60-by-baionlenja.webp</div>
+        <figcaption>source: <a href="https://www.reddit.com/r/MechanicalKeyboards/comments/1qerq29/gehirn60_by_baionlenja_improved_by_bowl_launched/">reddit.com/r/MechanicalKeyboards</a></figcaption>
+      </figure>
+
+      <p>But of course, even though I have the money to buy a Gehirn, I decided to settle for what I picked — and besides, the price difference between them is nearly 7x, so any comparison doesn’t mean much. That said, I still think the design is very good, especially for the money: I bought a fully working, pre-built custom keyboard with an aluminum case for €60 — that’s already worth a lot. As for the Gehirn, let it remain my design reference for something I’d like to get in the future. Who knows — maybe I’ll go through more than one keyboard in the next five years.</p>
+    </section>
+
+    <section class="note" style="--tilt: 0.3deg">
+      <span class="tab tab--right">09 / summary</span>
+      <h3>Day One Wrap-Up</h3>
+
+      <p>As I said, on the first day I couldn’t really say much about the keyboard. The experience was short, but I’ll be expanding this article over time with new details and my own opinions.</p>
+
+      <aside class="sticker sticker--orange" style="--sticker-tilt: -2.8deg">to be continued…</aside>
+    </section>
+
+    <div class="back"><a href="../index.html">← back to writing/</a></div>
+
+  </main>
+</body>
+</html>
