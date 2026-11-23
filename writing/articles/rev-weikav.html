@@ -60,7 +60,7 @@
       height: 25px;
       background: rgba(182, 182, 128, 0.55);
       box-shadow: inset 0 0 0 1px rgba(12, 12, 12, 0.05);
-      transform: translateX(-50%) rotate(-2.2deg);
+      transform: translateX(-50%) rotate(var(--tape-tilt, -2.2deg));
     }
 
     .tab {
@@ -261,12 +261,20 @@
       h3 { font-size: 1.08rem; }
       .sticker { margin-left: 12px; font-size: 19px; max-width: calc(100% - 16px); }
     }
+
+    /* wide screens: the big notes are stuck to the wall at slightly random angles */
+    @media (min-width: 1100px) {
+      .note {
+        margin-bottom: var(--gap-wide, 44px);
+        transform: translateX(var(--drift, 0px)) rotate(var(--tilt-wide, var(--tilt, 0deg)));
+      }
+    }
   </style>
 </head>
 <body>
   <main class="wall">
 
-    <header class="note cover" style="--tilt: -0.7deg">
+    <header class="note cover" style="--tilt: -0.7deg; --tilt-wide: -0.9deg; --drift: 0px; --gap-wide: 52px; --tape-tilt: -3deg">
       <span class="tab" style="--tab-tilt: -3.5deg">review / day one</span>
       <p class="eyebrow">writing / gear, my weikav experience</p>
       <h1>Weikav Lucky65 V3</h1>
@@ -275,7 +283,7 @@
 
     <h2 class="chapter">Overview</h2>
 
-    <section class="note" style="--tilt: 0.5deg">
+    <section class="note" style="--tilt: 0.5deg; --tilt-wide: 1.2deg; --drift: -58px; --gap-wide: 50px; --tape-tilt: 2.4deg">
       <span class="tab tab--right">01 / before</span>
       <h3>What came before this: Red Square Keyrox TKL</h3>
 
@@ -291,23 +299,20 @@
 
       <p>The biggest con is the complete lack of replaceability. I could swap the switches and it would get quieter; I could swap the cable and that would remove another problem — but there’s no such option. Everything is soldered, and quite badly at that, considering I took it apart. You can buy keycaps, but they’re expensive and it clearly wouldn’t pay off, since it wouldn’t outweigh all the other cons.</p>
 
-      <aside class="sticker sticker--blue" style="--sticker-tilt: -2.6deg">no hot-swap, no cable swap — that's the whole problem</aside>
     </section>
 
-    <section class="note" style="--tilt: -0.4deg; --tab-tilt: 2deg">
+    <section class="note" style="--tilt: -0.4deg; --tab-tilt: 2deg; --tilt-wide: -1.4deg; --drift: 44px; --gap-wide: 38px; --tape-tilt: -4deg">
       <span class="tab">02 / why 65%</span>
       <h3>Why 65%</h3>
 
       <p>I was choosing between 65% and 75%. Technically, the latter only differs by having an F-row, which is quite convenient in itself. However, to my regret, the vast majority of those keyboards had some kind of roller or knob, which I consider nothing short of absolute nonsense: I’m not a DJ, so I have no use for the thing, and I’m not a designer, so I can’t judge those who like it.</p>
-
-      <aside class="sticker sticker--green" style="--sticker-tilt: 2.2deg">still no idea what a knob is for</aside>
 
       <p>I also looked at the HHKB layout. I like how it looks, and my leaning toward Emacs and Vim keybindings only fueled that. The layout itself is one of the most compact out there, while still having all the keys I need without having to constantly use a function key or something like that. But the selection of HHKB-layout boards is pretty small, and what’s out there doesn’t quite give me what I want. As for the HHKBs themselves, they have a number of quirks I won’t list here, like using AA batteries instead of a built-in rechargeable cell, which is unusual in itself. I don’t think it’s anything terribly alarming, but why bother when there are far more convenient options?</p>
 
       <p>Of course, I looked at plenty of other layouts too — I saw a lot of split keyboards and ergonomic layouts in general, but they were just too niche. I can’t imagine a scenario where I’d use any of them on a regular basis. 65% remained the middle ground that would make my TKL keyboard more compact and spare me the drawbacks I found in the other layouts.</p>
     </section>
 
-    <section class="note" style="--tilt: 0.35deg">
+    <section class="note" style="--tilt: 0.35deg; --tilt-wide: 0.9deg; --drift: -34px; --gap-wide: 56px; --tape-tilt: 1.6deg">
       <span class="tab tab--right">03 / purchase</span>
       <h3>How I got here and how I bought it</h3>
 
@@ -317,21 +322,20 @@
 
       <p>So my choice fell on a custom keyboard in a Weikav case. Design-wise it suited me on almost every count, and, as the seller claimed, it was completely silent. I’d actually seen the listing ages ago, but nobody had really looked at it since, and the price of €60 was still a lot for me, considering I was buying a keyboard while already owning one. To me that’s just strange. Still, I did it — breaking my own rule about increasing my typing speed first. I won’t throw around words about how it’ll boost my speed; no, I didn’t pin such hopes on it. I wanted a quiet keyboard, first and foremost for comfortable typing. After about two weeks, I got it.</p>
 
-      <aside class="sticker sticker--orange" style="--sticker-tilt: -3deg">€60, no regrets</aside>
     </section>
 
     <h2 class="chapter">Day One — November 14, 2026</h2>
 
-    <section class="note" style="--tilt: -0.55deg; --tab-tilt: -2deg">
+    <section class="note" style="--tilt: -0.55deg; --tab-tilt: -2deg; --tilt-wide: -1.1deg; --drift: 62px; --gap-wide: 42px; --tape-tilt: -2.8deg">
       <span class="tab">04 / sound</span>
       <h3>First impression and sound</h3>
 
       <p>My first impressions of the keyboard were pretty clear-cut. I was absolutely delighted by how quiet the keys were. I didn’t hear a single sound until I started typing fast enough to actually hear the switches at all. These are Haimu Heartbeats, and they’re just silent. At first I thought this was generally impossible and that the sound in person wouldn’t match the videos, but as it turned out, I was wrong. Of course, I’m not a keyboard expert and can be amazed by anything that other enthusiasts are already used to — but when you’ve stuck with one keyboard for 4+ years, the difference is incredible. With the variety on the market today, it’d be a sin to complain about anything. But of course, I have every right to.</p>
 
-      <aside class="sticker sticker--lilac" style="--sticker-tilt: 1.8deg">Haimu Heartbeat — actually silent</aside>
+      <aside class="sticker sticker--lilac">Haimu Heartbeat — actually silent</aside>
     </section>
 
-    <section class="note" style="--tilt: 0.6deg">
+    <section class="note" style="--tilt: 0.6deg; --tilt-wide: 1.5deg; --drift: -48px; --gap-wide: 54px; --tape-tilt: 3.2deg">
       <span class="tab tab--right">05 / case</span>
       <h3>Color and case</h3>
 
@@ -339,17 +343,17 @@
 
       <p>The aluminum case is something else — I can’t even describe it. It’s as if I’m holding a genuinely serious piece of work in my hands, not a toy.</p>
 
-      <aside class="sticker sticker--pink" style="--sticker-tilt: -1.7deg">red won me over</aside>
+      <aside class="sticker sticker--pink">red won me over</aside>
     </section>
 
-    <section class="note" style="--tilt: -0.3deg">
+    <section class="note" style="--tilt: -0.3deg; --tilt-wide: -0.8deg; --drift: 30px; --gap-wide: 46px; --tape-tilt: -1.8deg">
       <span class="tab" style="--tab-tilt: 3deg">06 / first day</span>
       <h3>What I managed to do on the first day</h3>
 
       <p>Naturally, I can’t name many technical details — I don’t understand that side of things, and my first-day experience was pretty short anyway. I wrote a little bit of code and played some World of Warcraft in the evening, around one o’clock. Again, I can’t list many pros, since I don’t know the technical side. But I did find some cons for myself on day one.</p>
     </section>
 
-    <section class="note" style="--tilt: 0.45deg; --tab-tilt: -2.5deg">
+    <section class="note" style="--tilt: 0.45deg; --tab-tilt: -2.5deg; --tilt-wide: 1.3deg; --drift: -66px; --gap-wide: 40px; --tape-tilt: 2.1deg">
       <span class="tab tab--right">07 / cons</span>
       <h3>Cons</h3>
 
@@ -357,7 +361,7 @@
 
       <p><strong>The Fn layer.</strong> Another issue is, in my view, a strange choice for Fn+. The strangest thing I noticed: <code>`</code> and <code>~</code> — I just can’t type them out of habit. I can’t explain it, but in my mind it would be much better on Esc. In any case, I can remap it. As for the other keys, using Fn+HJKL seems painful. It’s not even the keys themselves, it’s that Home and End are assigned without any logic. In the Vim layout, J and K are down and up respectively — so why, having decided to use HJKL, did you map them to K and L? Well, of course, this is nitpicking; I can change all of it through VIA. For convenience, I’ll leave my whole layout here in a table.</p>
 
-      <aside class="sticker sticker--yellow" style="--sticker-tilt: 2.6deg">note: haven't changed the keys yet — this is the stock layout</aside>
+      <aside class="sticker sticker--yellow">note: haven't changed the keys yet — this is the stock layout</aside>
 
       <div class="table-wrap">
         <table>
@@ -435,16 +439,13 @@
 
       <p><strong>Light strip.</strong> This was one of the main design cons that jumped out at me, but I got used to it in literally a couple of hours — I even started thinking it wasn’t such a bad design choice. Sure, you could say I’m just aiming for excessive minimalism, which is just as out of place as this light strip, but in my mind a plain, strict metal square looks like something so mesmerizing it’s hard to put into words. It’s space that we create for ourselves.</p>
 
-      <aside class="sticker sticker--green" style="--sticker-tilt: -2.2deg">weird for two hours, then invisible</aside>
     </section>
 
-    <section class="note" style="--tilt: -0.45deg; --tab-tilt: 2.8deg">
+    <section class="note" style="--tilt: -0.45deg; --tab-tilt: 2.8deg; --tilt-wide: -1.6deg; --drift: 54px; --gap-wide: 58px; --tape-tilt: -3.4deg">
       <span class="tab">08 / Gehirn</span>
       <h3>Design and Gehirn</h3>
 
       <p>Of course, I could talk a lot more about design, since I mostly looked at design choices in the first place. A big role was played by <a href="https://www.youtube.com/@danil_hi_seted">Danil HS</a>'s Baionlenja Gehirn review video <a href="https://www.youtube.com/watch?v=di8-9ssPdqQ">https://www.youtube.com/watch?v=di8-9ssPdqQ</a>, which I stumbled across completely by chance in my YouTube recommendations. In the video the author talked about the Baionlenja Gehirn, and I was incredibly taken with it: all that mystery and, precisely, the sense of things left unsaid, with its own lore — that’s something especially beautiful. The enigmatic image of Gehirn the Living Fossil, wedged beneath a keyboard, looks simply unbeatable — especially compared to what we get with the Weikav Lucky, where the clover looks really cheap.</p>
-
-      <aside class="sticker sticker--blue" style="--sticker-tilt: 1.6deg">Gehirn is still the dream board</aside>
 
       <!-- Put gehirn60-by-baionlenja.webp next to this file and replace the placeholder with <img> -->
       <figure>
@@ -455,13 +456,13 @@
       <p>But of course, even though I have the money to buy a Gehirn, I decided to settle for what I picked — and besides, the price difference between them is nearly 7x, so any comparison doesn’t mean much. That said, I still think the design is very good, especially for the money: I bought a fully working, pre-built custom keyboard with an aluminum case for €60 — that’s already worth a lot. As for the Gehirn, let it remain my design reference for something I’d like to get in the future. Who knows — maybe I’ll go through more than one keyboard in the next five years.</p>
     </section>
 
-    <section class="note" style="--tilt: 0.3deg">
+    <section class="note" style="--tilt: 0.3deg; --tilt-wide: 0.8deg; --drift: -26px; --gap-wide: 48px; --tape-tilt: 1.2deg">
       <span class="tab tab--right">09 / summary</span>
       <h3>Day One Wrap-Up</h3>
 
       <p>As I said, on the first day I couldn’t really say much about the keyboard. The experience was short, but I’ll be expanding this article over time with new details and my own opinions.</p>
 
-      <aside class="sticker sticker--orange" style="--sticker-tilt: -2.8deg">to be continued…</aside>
+      <aside class="sticker sticker--orange">to be continued…</aside>
     </section>
 
     <div class="back"><a href="../index.html">← back to writing/</a></div>
